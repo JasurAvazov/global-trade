@@ -3,7 +3,6 @@
         <div class="header__top">
             <div class="container">
                 <a class="logo" href="#">
-                    <!-- <img src="../assets/photo_2023-09-11_18-06-41.jpg" alt=""> -->
                     <p>GGTrade<span>.</span></p> 
                 </a>
                 <div class="header__features">
