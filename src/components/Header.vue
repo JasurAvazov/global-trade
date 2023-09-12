@@ -65,7 +65,7 @@
                         Сервисы
                     </a>
                     <a href="#" class="header__nav-btn">
-                        Контакт
+                        Контакты
                     </a>
                 </nav>
             </div>
@@ -91,6 +91,10 @@
                 font-size: 22px;
                 color: white;
                 font-weight: 800;
+                transition: color .3s;
+                &:hover{
+                    color: #f79f24;
+                }
                 span{
                     color: #f79f24;
                 }
@@ -183,6 +187,9 @@
             font-weight: 500;
             font-size: 14px;
             transition: background-color .3s;
+            &.active{
+                color: white;
+            }
             &.active, &:hover{
                 background-color: #f79f24;
             }
