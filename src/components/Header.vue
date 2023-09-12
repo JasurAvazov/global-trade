@@ -53,7 +53,22 @@
             </div>
         </div>
         <div class="header__bot">
-            <p>sdasdasda</p>
+            <div class="container">
+                <nav class="header__nav">
+                    <a href="#" class="header__nav-btn active">
+                        Главная
+                    </a>
+                    <a href="#" class="header__nav-btn">
+                        Работы
+                    </a>
+                    <a href="#" class="header__nav-btn">
+                        Сервисы
+                    </a>
+                    <a href="#" class="header__nav-btn">
+                        Контакт
+                    </a>
+                </nav>
+            </div>
         </div>
     </header>
 </template>
@@ -62,6 +77,12 @@
 .header{
     &__top{
         background-color: #202020;
+        .container{
+            padding: 25px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
         .logo{
             img{
                 max-height: 70px;
@@ -75,12 +96,6 @@
                 }
             }
         }
-    }
-    .container{
-        padding: 25px 15px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
     }
     &__features{
         display: flex;
@@ -149,6 +164,28 @@
             line-height: 1.8;
             font-weight: 400;
             color: #ffffffcc;
+        }
+    }
+    &__bot{
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+    }
+    &__nav{
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        width: max-content;
+        &-btn{
+            padding: 16px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: background-color .3s;
+            &.active, &:hover{
+                background-color: #f79f24;
+            }
         }
     }
 }
