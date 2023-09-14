@@ -1,5 +1,5 @@
 <template>
-	<div class="intro">
+	<section class="intro">
 		<div class="intro-bg"></div>
 		<div class="container">
 			<div class="sec-container">
@@ -7,7 +7,7 @@
                 <a class="intro-btn" href="#">Связаться</a>
             </div>
 		</div>
-	</div>
+	</section>
 </template>
 
 <style lang="scss" scoped>

@@ -11,21 +11,21 @@
 			class="heroSwiper"
 		>
 			<swiper-slide>
-				<img class="swiper-bg" src="../assets/img/hero1.png" alt="" />
+				<img class="swiper-bg" src="../assets/img/hero.jpeg" alt="" />
 				<div class="container">
-					<p class="subtitle">We are best car repair services</p>
-					<h2 class="title">Make your car last longer</h2>
-					<a class="btn" href="#">Book an appointment</a>
+					<p class="subtitle">Лучший сервис во всем Узбекистане</p>
+					<h2 class="title">Ваш путь к Китаю: закупки и снабжение.</h2>
+					<a class="btn" href="#">Подробнее</a>
 				</div>
 			</swiper-slide>
-			<swiper-slide>
+			<!-- <swiper-slide>
 				<img class="swiper-bg" src="../assets/img/hero2.png" alt="" />
 				<div class="container">
 					<p class="subtitle">We care about your car</p>
 					<h2 class="title">It's time to come to repair your car</h2>
 					<a class="btn" href="#">Book an appointment</a>
 				</div>
-			</swiper-slide>
+			</swiper-slide> -->
 		</swiper>
 	</section>
 </template>
@@ -43,8 +43,10 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
+		opacity: .6;
 	}
 	&-slide {
+		background-color: #000;
 		.container {
 			position: relative;
 			display: flex;
@@ -58,6 +60,8 @@
             color: white;
             text-shadow: 0px 0px 10px rgb(0, 0, 0);
             margin-bottom: 24px;
+            max-width: 600px;
+            text-align: left;
         }
         .subtitle{
             font-size: 16px;
@@ -68,6 +72,8 @@
             line-height: 1.5;
             margin-bottom: 8px;
             text-shadow: 0px 0px 2px #865613;
+            max-width: 600px;
+			text-align: start;
         }
         .btn{
             background-color: #f79f24;
