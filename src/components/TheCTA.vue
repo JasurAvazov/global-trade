@@ -13,7 +13,7 @@
 
 <style lang="scss" scoped>
 .cta {
-	background-color: #f8f9fd;
+	background-color: #edeff5;
 	padding: 60px 0;
 	display: flex;
 	justify-content: center;

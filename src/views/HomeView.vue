@@ -11,9 +11,9 @@ import TheAdvantages from '../components/TheAdvantages.vue'
   <main>
     <Hero />
     <Intro />
-    <TheCounter />
     <Feedbacks />
     <TheAdvantages />
+    <TheCounter />
     <TheCTA />
   </main>
 </template>

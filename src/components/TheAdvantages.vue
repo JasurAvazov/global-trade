@@ -33,7 +33,7 @@
 
 <style lang="scss" scoped>
 .our-advantages {
-	background-color: white;
+	background-color: #edeff5;
 	display: flex;
 	justify-content: space-between;
     .container{
