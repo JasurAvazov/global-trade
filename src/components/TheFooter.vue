@@ -1,5 +1,5 @@
 <template>
-	<footer class="footer">
+	<footer class="footer" id="contacts">
 		<div class="container">
 			<ul class="footer__columns">
 				<li class="footer__column">

@@ -13,8 +13,8 @@
 
 <style lang="scss" scoped>
 .cta {
-	background-color: #edeff5;
-	padding: 60px 0;
+	background-color: white;
+	padding: 100px 0 100px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -27,13 +27,17 @@
 
 .cta-title {
 	font-size: 24px;
-	font-weight: bold;
+	font-weight: 600;
 	margin-bottom: 20px;
+    color: rgba(0, 0, 0, 0.8);
 }
 
 .cta-description {
 	font-size: 16px;
 	margin-bottom: 60px;
+	max-width: 800px;
+	color: gray;
+	font-weight: 500;
 }
 
 .cta-button {
