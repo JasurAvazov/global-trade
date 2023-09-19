@@ -1,4 +1,5 @@
 <script setup>
+import Services from '../components/home/Services.vue'
 import Hero from '../components/TheHero.vue'
 import Intro from '../components/TheIntro.vue'
 import Prices from '../components/ThePrices.vue'
@@ -10,6 +11,7 @@ import TheAdvantages from '../components/TheAdvantages.vue'
 
 <template>
   <main>
+    <!-- <Services /> -->
     <Hero />
     <Intro />
     <Feedbacks />

@@ -42,17 +42,43 @@
 					<h3 class="footer-title">Навигация</h3>
 					<ul class="footer__ul">
 						<li>
-							<a href="#">Главная</a>
+							<router-link :to="{ name: 'home', hash: '' }">
+								Главная
+							</router-link>
 						</li>
 						<li>
-							<a href="#">Работы</a>
+							<router-link :to="{ name: 'home', hash: '#works' }">
+								Работы
+							</router-link>
 						</li>
 						<li>
-							<a href="#">Сервисы</a>
+							<router-link :to="{ name: 'home', hash: '#feedbacks' }">
+								Отзывы
+							</router-link>
 						</li>
 						<li>
-							<a href="#">Контакты</a>
+							<router-link :to="{ name: 'home', hash: '#prices' }">
+								Сервисы
+							</router-link>
 						</li>
+						<li>
+							<router-link :to="{ name: 'home', hash: '#contacts' }">
+								Контакты
+							</router-link>
+						</li>
+						<template v-if="loggedIn">
+							<router-link to="/management">
+								Режим менеджера
+							</router-link>
+						</template>
+						<template v-else>
+							<button
+								class="header-register"
+								@click="openLoginModal"
+							>
+								Войти как админ
+							</button>
+						</template>
 					</ul>
 				</li>
 				<li class="footer__column">
@@ -85,7 +111,31 @@
 			</ul>
 		</div>
 	</footer>
+	<LoginModal v-if="showLoginModal" @close="closeLoginModal" />
 </template>
+
+<script>
+import { mapState } from "vuex";
+
+export default {
+	computed: {
+		...mapState("log", ["loggedIn"]),
+	},
+	data() {
+		return {
+			showLoginModal: false,
+		};
+	},
+	methods: {
+		openLoginModal() {
+			this.showLoginModal = true;
+		},
+		closeLoginModal() {
+			this.showLoginModal = false;
+		},
+	},
+};
+</script>
 
 <style lang="scss" scoped>
 .footer {
@@ -168,11 +218,12 @@
 			justify-content: flex-start;
 			gap: 20px;
 		}
-		a {
+		a, .header-register {
 			font-size: 14px;
 			font-weight: 400;
 			color: white;
 			transition: color 0.3s;
+			background-color: transparent;
 			&:hover {
 				color: #f79f24;
 			}
