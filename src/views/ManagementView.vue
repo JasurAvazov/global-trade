@@ -1,20 +1,23 @@
 <template>
   <div class="management">
-    <Passport />
+    <Hero />
+    <Feedbacks />
     <President />
     <Check />
   </div>
 </template>
 
 <script>
-import Passport from "../components/management/Passport.vue";
+import Hero from "../components/management/Hero.vue";
+import Feedbacks from "../components/management/Feedbacks.vue";
 import President from "../components/management/President.vue";
 import Check from "../components/management/Check.vue";
 
 export default {
   name: 'ManagementView',
   components: {
-    Passport,
+    Hero,
+    Feedbacks,
     President,
     Check,
   }

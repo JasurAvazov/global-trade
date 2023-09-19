@@ -22,36 +22,37 @@ const mutations = {
 const actions = {
 	async fetchItems({ commit }) {
 		try {
-			const q = query(collection(db, "feedbacks"), orderBy("created_at","desc"));
+			const q = query(collection(db, "heroes"));
 			const querySnapshot = await getDocs(q);
 			const items = querySnapshot.docs.map((doc) => {
 				return { id: doc.id, ...doc.data() };
 			});
+			console.log("items", items);
 			commit("setItems", items);
 		} catch (error) {
-			console.error("Error fetching feedback items:", error);
+			console.error("Error fetching hero items:", error);
 		}
 	},
 
-	async addItem({ dispatch }, feedbackData) {
+	async addItem({ dispatch }, heroData) {
 		try {
 			const newItem = {
-				...feedbackData,
+				...heroData,
 				created_at: new Date().toISOString(),
 			};
-			await addDoc(collection(db, "feedbacks"), newItem);
+			await addDoc(collection(db, "heroes"), newItem);
 			await dispatch("fetchItems");
 		} catch (error) {
-			console.error("Error adding feedback item:", error);
+			console.error("Error adding hero item:", error);
 		}
 	},
 
 	async deleteItem({ dispatch }, itemId) {
 		try {
-			await deleteDoc(doc(db, "feedbacks", itemId));
+			await deleteDoc(doc(db, "heroes", itemId));
 			await dispatch("fetchItems");
 		} catch (error) {
-			console.error("Error deleting feedback item:", error);
+			console.error("Error deleting hero item:", error);
 		}
 	},
 };

@@ -11,7 +11,7 @@
 				:modules="modules"
 				class="mySwiper"
 			>
-				<swiper-slide>
+				<swiper-slide v-for="item in items" :key="item.id">
 					<div class="quote">
 						<img
 							src="../assets/img/icons/quote-left.svg"
@@ -20,66 +20,32 @@
 						/>
 					</div>
 					<p>
-						Далеко-далеко, за словесными горами, вдали от стран
-						Вокалий и Согласных, живут слепые тексты.
-					</p>
-				</swiper-slide>
-				<swiper-slide>
-					<div class="quote">
-						<img
-							src="../assets/img/icons/quote-left.svg"
-							alt=""
-							draggable="false"
-						/>
-					</div>
-					<p>
-						Далеко-далеко, за словесными горами, вдали от стран
-						Вокалий и Согласных, живут слепые тексты.
-					</p>
-				</swiper-slide>
-				<swiper-slide>
-					<div class="quote">
-						<img
-							src="../assets/img/icons/quote-left.svg"
-							alt=""
-							draggable="false"
-						/>
-					</div>
-					<p>
-						Далеко-далеко, за словесными горами, вдали от стран
-						Вокалий и Согласных, живут слепые тексты.
-					</p>
-				</swiper-slide>
-				<swiper-slide>
-					<div class="quote">
-						<img
-							src="../assets/img/icons/quote-left.svg"
-							alt=""
-							draggable="false"
-						/>
-					</div>
-					<p>
-						Далеко-далеко, за словесными горами, вдали от стран
-						Вокалий и Согласных, живут слепые тексты.
-					</p>
-				</swiper-slide>
-				<swiper-slide>
-					<div class="quote">
-						<img
-							src="../assets/img/icons/quote-left.svg"
-							alt=""
-							draggable="false"
-						/>
-					</div>
-					<p>
-						Далеко-далеко, за словесными горами, вдали от стран
-						Вокалий и Согласных, живут слепые тексты.
+						{{ item.paragraph }}
 					</p>
 				</swiper-slide>
 			</swiper>
 		</div>
 	</section>
 </template>
+
+<script setup>
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+const items = ref([]);
+const reversedItems = ref([]);
+
+const fetchItems = async () => {
+  await store.dispatch("feedbacks/fetchItems");
+  items.value = store.getters["feedbacks/getItems"];
+};
+
+onMounted(() => {
+  fetchItems();
+  reversedItems.value = items.value.slice().reverse();
+});
+</script>
 
 <style lang="scss" scoped>
 .feedbacks {
@@ -99,18 +65,6 @@
 	}
 	.swiper {
 		overflow: visible;
-		// .swiper-pagination-bullet::before {
-		// 	content: "";
-		// 	display: block;
-		// 	width: 150%;
-		// 	height: 150%;
-		// 	border: 1px solid #f79f24;
-		// 	border-radius: 50%;
-		// 	position: absolute;
-		// 	top: 0;
-		// 	left: 0;
-		// 	transform: translate(-25%, -25%);
-		// }
 		&-slide {
 			display: flex;
 			align-items: flex-start;
@@ -122,6 +76,7 @@
 			min-height: 200px;
 			margin-bottom: 80px;
 			p {
+				width: 100%;
 				text-align: start;
 				font-size: 16px;
 				line-height: 1.5;

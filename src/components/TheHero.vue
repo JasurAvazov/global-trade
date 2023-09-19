@@ -5,30 +5,41 @@
 			:loop="true"
 			:modules="modules"
 			:autoplay="{
-				delay: 500000,
+				delay: 10000,
 				disableOnInteraction: false,
 			}"
 			class="heroSwiper"
 		>
-			<swiper-slide>
+			<swiper-slide v-for="item in items" :key="item.id">
 				<img class="swiper-bg" src="../assets/img/hero.jpeg" alt="" />
 				<div class="container">
-					<p class="subtitle">Лучший сервис во всем Узбекистане</p>
-					<h2 class="title">Ваш путь к Китаю: закупки и снабжение.</h2>
-					<a class="btn" href="#">Подробнее</a>
+					<p class="subtitle">{{ item.subtitle }}</p>
+					<h2 class="title">{{ item.title }}</h2>
+					<a class="btn" :href="item.buttonLink">{{ item.button }}</a>
 				</div>
 			</swiper-slide>
-			<!-- <swiper-slide>
-				<img class="swiper-bg" src="../assets/img/hero2.png" alt="" />
-				<div class="container">
-					<p class="subtitle">We care about your car</p>
-					<h2 class="title">It's time to come to repair your car</h2>
-					<a class="btn" href="#">Book an appointment</a>
-				</div>
-			</swiper-slide> -->
 		</swiper>
 	</section>
 </template>
+
+<script setup>
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+
+const store = useStore();
+const items = ref([]);
+const reversedItems = ref([]);
+
+const fetchItems = async () => {
+  await store.dispatch("heroes/fetchItems");
+  items.value = store.getters["heroes/getItems"];
+};
+
+onMounted(() => {
+  fetchItems();
+  reversedItems.value = items.value.slice().reverse();
+});
+</script>
 
 <style lang="scss" scoped>
 .swiper {
