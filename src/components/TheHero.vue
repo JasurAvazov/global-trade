@@ -22,23 +22,38 @@
 	</section>
 </template>
 
-<script setup>
+<script>
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css";
+import "swiper/css/effect-fade";
+import "../assets/swiper.scss";
+import { EffectFade, Autoplay } from "swiper/modules";
 
-const store = useStore();
-const items = ref([]);
-const reversedItems = ref([]);
+export default {
+	components: {
+		Swiper,
+		SwiperSlide,
+	},
+	setup() {
+		const store = useStore();
+		const items = ref([]);
+		const reversedItems = ref([]);
 
-const fetchItems = async () => {
-  await store.dispatch("heroes/fetchItems");
-  items.value = store.getters["heroes/getItems"];
+		const fetchItems = async () => {
+			await store.dispatch("heroes/fetchItems");
+			items.value = store.getters["heroes/getItems"];
+		};
+
+		onMounted(() => {
+			fetchItems();
+			reversedItems.value = items.value.slice().reverse();
+		});
+
+		return { modules: [EffectFade, Autoplay], items, reversedItems };
+	},
 };
-
-onMounted(() => {
-  fetchItems();
-  reversedItems.value = items.value.slice().reverse();
-});
 </script>
 
 <style lang="scss" scoped>
@@ -105,24 +120,3 @@ onMounted(() => {
 	}
 }
 </style>
-
-<script>
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-import "swiper/css";
-import "swiper/css/effect-fade";
-
-import "../assets/swiper.scss";
-
-import { EffectFade, Autoplay } from "swiper/modules";
-
-export default {
-	components: {
-		Swiper,
-		SwiperSlide,
-	},
-	setup() {
-		return { modules: [EffectFade, Autoplay] };
-	},
-};
-</script>
