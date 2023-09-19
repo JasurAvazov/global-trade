@@ -1,5 +1,5 @@
 <template>
-	<section class="feedbacks">
+	<section class="feedbacks" id="feedbacks">
 		<div class="container">
 			<p class="feedbacks-title">Счастливые клиенты и отзывы</p>
 			<swiper

@@ -1,5 +1,5 @@
 <template>
-    <section class="prices">
+    <section class="prices" id="prices">
         <div class="container">
             <p class="subtitle">
                 Цены и Планы
@@ -10,12 +10,14 @@
             <div class="items">
                 <div class="item">
                     <h5 class="item-title">Цены на «АВИА» карго</h5>
-                    <p class="item-price">10.00</p>
+                    <!-- <p class="item-price">10.00</p> -->
+                    <img class="item-img" src="../assets/img/logo.jpg" alt="" draggable="false">
                     <p class="item-description">от 0.1 КГ за киллограм - 10 USD. Почта "Авиа" по прибытии на наш склад упаковывается и отправляется в путь в течение 3-6 дней, Почта прибывает в Ташкент в течение 6-12 дней после отправления</p>
                 </div>
                 <div class="item">
                     <h5 class="item-title">Цены на «ФУРА» карго</h5>
-                    <p class="item-price">6.60</p>
+                    <!-- <p class="item-price">6.60</p> -->
+                    <img class="item-img" src="../assets/img/logo.jpg" alt="" draggable="false">
                     <p class="item-description">от 0.1 КГ за киллограм – 6.6 USD. Почта” фура " по прибытии на наш склад упаковывается и отправляется в путь в течение 3-6 дней, Почта прибывает в Ташкент в течение 20-28 дней после отправления.</p>
                 </div>
             </div>
@@ -57,6 +59,11 @@
         letter-spacing: 1.2px;
         font-weight: 500;
         margin-bottom: 8px;
+    }
+    &-img{
+        width: 100%;
+        height: 120px;
+        object-fit: cover;
     }
     &-price{
         font-size: 44px;

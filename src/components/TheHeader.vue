@@ -84,7 +84,8 @@
 				<nav class="header__nav">
 					<a href="#" class="header__nav-btn">Главная</a>
 					<a href="#works" class="header__nav-btn">Работы</a>
-					<a href="#services" class="header__nav-btn">Сервисы</a>
+					<a href="#feedbacks" class="header__nav-btn">Отзывы</a>
+					<a href="#prices" class="header__nav-btn">Сервисы</a>
 					<a href="#contacts" class="header__nav-btn">Контакты</a>
 					<!-- <router-link to="/" custom v-slot="{ navigate }">
 						<button
