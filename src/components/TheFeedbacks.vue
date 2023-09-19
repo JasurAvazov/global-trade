@@ -99,9 +99,18 @@
 	}
 	.swiper {
 		overflow: visible;
-        .swiper-pagination.swiper-pagination-clickable.swiper-pagination-bullets.swiper-pagination-horizontal{
-            background-color: red !important;
-        }
+		// .swiper-pagination-bullet::before {
+		// 	content: "";
+		// 	display: block;
+		// 	width: 150%;
+		// 	height: 150%;
+		// 	border: 1px solid #f79f24;
+		// 	border-radius: 50%;
+		// 	position: absolute;
+		// 	top: 0;
+		// 	left: 0;
+		// 	transform: translate(-25%, -25%);
+		// }
 		&-slide {
 			display: flex;
 			align-items: flex-start;
@@ -111,7 +120,7 @@
 			border: 1px solid rgba(0, 0, 0, 0.02);
 			box-shadow: 0px 0px 40px 5px rgba(0, 0, 0, 0.253);
 			min-height: 200px;
-            margin-bottom: 80px;
+			margin-bottom: 80px;
 			p {
 				text-align: start;
 				font-size: 16px;
