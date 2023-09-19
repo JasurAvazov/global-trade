@@ -29,7 +29,7 @@ export default {
 	},
 	methods: {
 		login() {
-			if (this.username === "admin" && this.password === "admin") {
+			if (this.username === "" && this.password === "") {
 				this.$store.commit("log/setLoggedIn", true);
 				this.$router.push({ name: "management" });
 				this.$emit("close");

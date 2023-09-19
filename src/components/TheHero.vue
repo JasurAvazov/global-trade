@@ -11,7 +11,7 @@
 			class="heroSwiper"
 		>
 			<swiper-slide v-for="item in items" :key="item.id">
-				<img class="swiper-bg" src="../assets/img/hero.jpeg" alt="" />
+				<img class="swiper-bg" :src="item.photoURL" alt="" />
 				<div class="container">
 					<p class="subtitle">{{ item.subtitle }}</p>
 					<h2 class="title">{{ item.title }}</h2>

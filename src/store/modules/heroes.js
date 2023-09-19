@@ -22,12 +22,13 @@ const mutations = {
 const actions = {
 	async fetchItems({ commit }) {
 		try {
-			const q = query(collection(db, "heroes"));
+			const q = query(
+				collection(db, "heroes")
+			);
 			const querySnapshot = await getDocs(q);
 			const items = querySnapshot.docs.map((doc) => {
 				return { id: doc.id, ...doc.data() };
 			});
-			console.log("items", items);
 			commit("setItems", items);
 		} catch (error) {
 			console.error("Error fetching hero items:", error);
@@ -36,11 +37,10 @@ const actions = {
 
 	async addItem({ dispatch }, heroData) {
 		try {
-			const newItem = {
+			await addDoc(collection(db, "heroes"), {
 				...heroData,
 				created_at: new Date().toISOString(),
-			};
-			await addDoc(collection(db, "heroes"), newItem);
+			});
 			await dispatch("fetchItems");
 		} catch (error) {
 			console.error("Error adding hero item:", error);

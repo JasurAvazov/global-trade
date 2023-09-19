@@ -3,15 +3,21 @@
 		<div class="container">
 			<h1>Управление Главным Слайдом</h1>
 
-			<!-- Форма для добавления отзыва -->
+			<!-- Форма для добавления героя -->
 			<form @submit.prevent="addHero">
+				<input
+					type="file"
+					ref="fileInput"
+					accept="image/*"
+					@change="handleFileChange"
+				/>
 				<textarea
 					v-model="newHero.subtitle"
-					placeholder="Введите подзагаловок"
+					placeholder="Введите подзаголовок"
 				></textarea>
 				<textarea
 					v-model="newHero.title"
-					placeholder="Введите загаловок"
+					placeholder="Введите заголовок"
 				></textarea>
 				<textarea
 					v-model="newHero.button"
@@ -21,16 +27,33 @@
 					v-model="newHero.buttonLink"
 					placeholder="Введите ссылку кнопки"
 				></textarea>
-				<button type="submit">Добавить отзыв</button>
+				<button type="submit">Добавить слайд</button>
 			</form>
 
-			<!-- Список отзывов -->
+			<!-- Список героев -->
 			<ul>
 				<li v-for="hero in heroes" :key="hero.id">
-					<p>{{ hero.subtitle }}</p>
-					<p>{{ hero.title }}</p>
-					<p>{{ hero.button }}</p>
-					<p>{{ hero.buttonLink }}</p>
+					<div>
+						<p>photo:</p>
+						<br />
+						<img :src="hero.photoURL" alt="Фотография слайда" />
+					</div>
+					<p>
+						subtitle:<br />
+						{{ hero.subtitle }}
+					</p>
+					<p>
+						title:<br />
+						{{ hero.title }}
+					</p>
+					<p>
+						button:<br />
+						{{ hero.button }}
+					</p>
+					<p>
+						buttonLink:<br />
+						{{ hero.buttonLink }}
+					</p>
 					<button @click="deleteHero(hero.id)">Удалить</button>
 				</li>
 			</ul>
@@ -41,6 +64,13 @@
 <script setup>
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
+import {
+	getStorage,
+	ref as storageRef,
+	uploadBytes,
+	getDownloadURL,
+} from "firebase/storage";
+import { db } from "../../firebase"; // Проверьте, что вы правильно импортировали db из firebase.js
 
 const store = useStore();
 const newHero = ref({
@@ -48,6 +78,7 @@ const newHero = ref({
 	title: "",
 	button: "",
 	buttonLink: "",
+	photoFile: null,
 });
 const heroes = ref([]);
 
@@ -58,20 +89,56 @@ const fetchHeroes = async () => {
 
 onMounted(fetchHeroes);
 
+const handleFileChange = (event) => {
+	const file = event.target.files[0];
+	newHero.value.photoFile = file;
+};
+
 const addHero = async () => {
-	await store.dispatch("heroes/addItem", newHero.value);
-	newHero.value = {
-		subtitle: "",
-		title: "",
-		button: "",
-		buttonLink: "",
-	}; // Очистить форму после добавления
-	fetchHeroes(); // Обновить список отзывов
+	try {
+		// Загрузите изображение в Firebase Cloud Storage
+		const storage = getStorage();
+		const storageRefInstance = storageRef(
+			storage,
+			`heroes/${newHero.value.title}`
+		);
+		await uploadBytes(storageRefInstance, newHero.value.photoFile);
+
+		// Получите ссылку на загруженное изображение
+		const photoURL = await getDownloadURL(storageRefInstance);
+
+		// Создайте нового героя с ссылкой на изображение
+		const newItem = {
+			subtitle: newHero.value.subtitle,
+			title: newHero.value.title,
+			button: newHero.value.button,
+			buttonLink: newHero.value.buttonLink,
+			created_at: new Date().toISOString(),
+			photoURL, // Сохраните ссылку на изображение
+		};
+
+		// Добавьте нового героя в Firestore
+		await store.dispatch("heroes/addItem", newItem);
+
+		// Очистите форму после добавления
+		newHero.value = {
+			subtitle: "",
+			title: "",
+			button: "",
+			buttonLink: "",
+			photoFile: null,
+		};
+
+		// Обновите список героев
+		fetchHeroes();
+	} catch (error) {
+		console.error("Error adding hero item:", error);
+	}
 };
 
 const deleteHero = async (heroId) => {
 	await store.dispatch("heroes/deleteItem", heroId);
-	fetchHeroes(); // Обновить список отзывов после удаления
+	fetchHeroes();
 };
 </script>
 
@@ -95,6 +162,14 @@ const deleteHero = async (heroId) => {
 			border-radius: 5px;
 			resize: vertical;
 		}
+		input[type="file"] {
+			width: 100%;
+			padding: 10px 20px;
+			background-color: white;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			margin-bottom: 5px;
+		}
 		button {
 			margin-top: 10px;
 			padding: 10px 20px;
@@ -109,6 +184,9 @@ const deleteHero = async (heroId) => {
 	ul {
 		list-style: none;
 		padding: 0;
+		background-color: #f2f2f2;
+		padding: 20px;
+		border-radius: 5px;
 		li {
 			display: flex;
 			justify-content: space-between;
@@ -117,6 +195,10 @@ const deleteHero = async (heroId) => {
 			border-bottom: 1px solid #ccc;
 			&:last-child {
 				border-bottom: none;
+			}
+			img {
+				width: 200px;
+				aspect-ratio: 16/10;
 			}
 			button {
 				background-color: #dc3545;
