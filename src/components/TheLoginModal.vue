@@ -2,7 +2,6 @@
 	<div class="login__modal">
 		<div class="login__modal-bg" @click="closeLoginModal"></div>
 		<div class="login__modal-inner">
-			<p>*пароль и логин admin</p>
 			<input
 				class="login__modal-input"
 				v-model="username"
@@ -29,7 +28,7 @@ export default {
 	},
 	methods: {
 		login() {
-			if (this.username === "" && this.password === "") {
+			if (this.username === "admin" && this.password === "admin123") {
 				this.$store.commit("log/setLoggedIn", true);
 				this.$router.push({ name: "management" });
 				this.$emit("close");
