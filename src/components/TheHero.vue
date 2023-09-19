@@ -4,10 +4,6 @@
 			:effect="'fade'"
 			:loop="true"
 			:modules="modules"
-			:autoplay="{
-				delay: 10000,
-				disableOnInteraction: false,
-			}"
 			class="heroSwiper"
 		>
 			<swiper-slide v-for="item in items" :key="item.id">
@@ -26,10 +22,13 @@
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
 import { Swiper, SwiperSlide } from "swiper/vue";
+
 import "swiper/css";
 import "swiper/css/effect-fade";
+
 import "../assets/swiper.scss";
-import { EffectFade, Autoplay } from "swiper/modules";
+
+import { EffectFade } from "swiper/modules";
 
 export default {
 	components: {
@@ -51,7 +50,7 @@ export default {
 			reversedItems.value = items.value.slice().reverse();
 		});
 
-		return { modules: [EffectFade, Autoplay], items, reversedItems };
+		return { modules: [EffectFade], items, reversedItems };
 	},
 };
 </script>
@@ -69,7 +68,7 @@ export default {
 		left: 0;
 		right: 0;
 		bottom: 0;
-		opacity: .6;
+		opacity: 0.6;
 	}
 	&-slide {
 		background-color: #000;
@@ -80,37 +79,37 @@ export default {
 			justify-content: center;
 			flex-direction: column;
 		}
-        .title{
-            font-size: 40px;
-            font-weight: 700;
-            color: white;
-            text-shadow: 0px 0px 10px rgb(0, 0, 0);
-            margin-bottom: 24px;
-            max-width: 600px;
-            text-align: left;
-        }
-        .subtitle{
-            font-size: 16px;
-            text-transform: uppercase;
-            font-weight: 600;
-            color: #f79f24;
-            letter-spacing: 4px;
-            line-height: 1.5;
-            margin-bottom: 8px;
-            text-shadow: 0px 0px 2px #865613;
-            max-width: 600px;
+		.title {
+			font-size: 40px;
+			font-weight: 700;
+			color: white;
+			text-shadow: 0px 0px 10px rgb(0, 0, 0);
+			margin-bottom: 24px;
+			max-width: 600px;
+			text-align: left;
+		}
+		.subtitle {
+			font-size: 16px;
+			text-transform: uppercase;
+			font-weight: 600;
+			color: #f79f24;
+			letter-spacing: 4px;
+			line-height: 1.5;
+			margin-bottom: 8px;
+			text-shadow: 0px 0px 2px #865613;
+			max-width: 600px;
 			text-align: start;
-        }
-        .btn{
-            background-color: #f79f24;
-            border: 1px solid #f79f24;
-            color: white;
-            border-radius: 4px;
-            padding: 12px 16px;
-            font-size: 14px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
+		}
+		.btn {
+			background-color: #f79f24;
+			border: 1px solid #f79f24;
+			color: white;
+			border-radius: 4px;
+			padding: 12px 16px;
+			font-size: 14px;
+			text-transform: uppercase;
+			font-weight: 600;
+		}
 	}
 }
 .hero {
