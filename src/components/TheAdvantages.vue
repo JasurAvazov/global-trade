@@ -4,7 +4,7 @@
 			<div class="advantage">
 				<div class="circle">
 					<!-- Вставьте свою иконку сюда -->
-					<img src="your-icon.png" alt="Иконка" />
+					<img src="" alt="Иконка" />
 				</div>
 				<h3 class="advantage-title">Достоинство 1</h3>
 				<p class="advantage-text">Описание достоинства 1 здесь.</p>
@@ -13,7 +13,7 @@
 			<div class="advantage">
 				<div class="circle">
 					<!-- Вставьте свою иконку сюда -->
-					<img src="your-icon.png" alt="Иконка" />
+					<img src="" alt="Иконка" />
 				</div>
 				<h3 class="advantage-title">Достоинство 2</h3>
 				<p class="advantage-text">Описание достоинства 2 здесь.</p>
@@ -22,7 +22,7 @@
 			<div class="advantage">
 				<div class="circle">
 					<!-- Вставьте свою иконку сюда -->
-					<img src="your-icon.png" alt="Иконка" />
+					<img src="" alt="Иконка" />
 				</div>
 				<h3 class="advantage-title">Достоинство 3</h3>
 				<p class="advantage-text">Описание достоинства 3 здесь.</p>
