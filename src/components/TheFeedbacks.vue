@@ -28,23 +28,45 @@
 	</section>
 </template>
 
-<script setup>
+<script>
 import { ref, onMounted } from "vue";
 import { useStore } from "vuex";
+import { Swiper, SwiperSlide } from "swiper/vue";
 
-const store = useStore();
-const items = ref([]);
-const reversedItems = ref([]);
+import "swiper/css";
+import "swiper/css/pagination";
 
-const fetchItems = async () => {
-  await store.dispatch("feedbacks/fetchItems");
-  items.value = store.getters["feedbacks/getItems"];
+import "../assets/swiper.scss";
+
+import { Pagination } from "swiper/modules";
+
+export default {
+	components: {
+		Swiper,
+		SwiperSlide,
+	},
+	setup() {
+		const store = useStore();
+		const items = ref([]);
+		const reversedItems = ref([]);
+
+		const fetchItems = async () => {
+			await store.dispatch("feedbacks/fetchItems");
+			items.value = store.getters["feedbacks/getItems"];
+		};
+
+		onMounted(() => {
+			fetchItems();
+			reversedItems.value = items.value.slice().reverse();
+		});
+
+		return {
+			modules: [Pagination],
+			items,
+			reversedItems,
+		};
+	},
 };
-
-onMounted(() => {
-  fetchItems();
-  reversedItems.value = items.value.slice().reverse();
-});
 </script>
 
 <style lang="scss" scoped>
@@ -104,27 +126,3 @@ onMounted(() => {
 	}
 }
 </style>
-
-<script>
-import { Swiper, SwiperSlide } from "swiper/vue";
-
-import "swiper/css";
-
-import "swiper/css/pagination";
-
-import "../assets/swiper.scss";
-
-import { Pagination } from "swiper/modules";
-
-export default {
-	components: {
-		Swiper,
-		SwiperSlide,
-	},
-	setup() {
-		return {
-			modules: [Pagination],
-		};
-	},
-};
-</script>
