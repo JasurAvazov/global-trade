@@ -10,7 +10,6 @@
 			<input
 				class="login__modal-input"
 				v-model="password"
-				type="password"
 				placeholder="Пароль"
 			/>
 			<button @click="login">Войти</button>
