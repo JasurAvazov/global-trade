@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 @import './assets/fonts.css';
 * {
   padding: 0;
@@ -26,6 +26,12 @@ export default {
   box-sizing: border-box;
   font-family: 'Montserrat';
   scroll-behavior: smooth;
+  &::-webkit-scrollbar{
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb{
+    background-color: #252525;
+  }
 }
 .container{
   max-width: 1200px;
