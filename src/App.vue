@@ -1,8 +1,7 @@
 <template>
   <TheHeader />
-  <!-- <Header /> -->
-  <router-view/>
-  <TheFooter />
+  <!-- <router-view/> -->
+  <!-- <TheFooter /> -->
 </template>
 
 <script>
@@ -20,31 +19,36 @@ export default {
 
 <style lang="scss">
 @import './assets/fonts.css';
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   font-family: 'Montserrat';
   scroll-behavior: smooth;
-  &::-webkit-scrollbar{
+
+  &::-webkit-scrollbar {
     width: 10px;
   }
-  &::-webkit-scrollbar-thumb{
+
+  &::-webkit-scrollbar-thumb {
     background-color: #252525;
   }
 }
-.container{
+
+.container {
   max-width: 1200px;
   width: 100%;
   padding: 0 15px;
   margin: 0 auto;
 }
-a{
+
+a {
   text-decoration: none;
   color: black;
 }
-button{
+
+button {
   border: 0;
   cursor: pointer;
-}
-</style>
+}</style>

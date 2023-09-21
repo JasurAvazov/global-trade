@@ -6,14 +6,15 @@
 					<p>GGTrade<span>.</span></p>
 				</a>
 				<div class="header__features">
+					<div class="nav__exit">
+						<div class="nav__exit-btn">
+							<div class="btn-elem"></div>
+						</div>
+					</div>
 					<div class="header__about">
 						<div class="header__about-item">
 							<div class="header__about-icon">
-								<img
-									src="../assets/img/icons/location-arrow.svg"
-									alt=""
-									draggable="false"
-								/>
+								<img src="../assets/img/icons/location-arrow.svg" alt="" draggable="false" />
 							</div>
 							<div class="header__about-text">
 								<h5 class="header__about-title">ADDRESS</h5>
@@ -24,11 +25,7 @@
 						</div>
 						<div class="header__about-item">
 							<div class="header__about-icon">
-								<img
-									src="../assets/img/icons/location-arrow.svg"
-									alt=""
-									draggable="false"
-								/>
+								<img src="../assets/img/icons/location-arrow.svg" alt="" draggable="false" />
 							</div>
 							<div class="header__about-text">
 								<h5 class="header__about-title">CALL US</h5>
@@ -41,41 +38,30 @@
 					<ul class="header__links">
 						<li>
 							<a href="#">
-								<img
-									src="../assets/img/icons/facebook.svg"
-									alt=""
-									draggable="false"
-								/>
+								<img src="../assets/img/icons/facebook.svg" alt="" draggable="false" />
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img
-									src="../assets/img/icons/twitter.svg"
-									alt=""
-									draggable="false"
-								/>
+								<img src="../assets/img/icons/twitter.svg" alt="" draggable="false" />
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img
-									src="../assets/img/icons/instagram.svg"
-									alt=""
-									draggable="false"
-								/>
+								<img src="../assets/img/icons/instagram.svg" alt="" draggable="false" />
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img
-									src="../assets/img/icons/dribbble.svg"
-									alt=""
-									draggable="false"
-								/>
+								<img src="../assets/img/icons/dribbble.svg" alt="" draggable="false" />
 							</a>
 						</li>
 					</ul>
+				</div>
+				<div class="nav__open">
+					<div class="nav__open-btn">
+						<div class="btn-elem"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -163,43 +149,68 @@ export default {
 .header {
 	&__top {
 		background-color: #252525;
+
 		.container {
 			padding: 25px 15px;
 			display: flex;
 			align-items: center;
 			justify-content: space-between;
 		}
+
 		.logo {
 			img {
 				max-height: 70px;
 			}
+
 			p {
 				font-size: 22px;
 				color: white;
 				font-weight: 800;
 				transition: color 0.3s;
+
 				&:hover {
 					color: #f79f24;
 				}
+
 				span {
 					color: #f79f24;
 				}
 			}
 		}
 	}
+
 	&__features {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+
+		&.active {}
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+			row-gap: 30px;
+			padding: 75px 0 20px;
+			position: fixed;
+			left: 0;
+			top: 0;
+			z-index: 99;
+			background-color: #252525;
+			height: 100%;
+			max-width: 400px;
+			width: 100%;
+		}
 	}
+
 	&__links {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		gap: 4px;
+
 		li {
 			list-style: none;
 		}
+
 		a {
 			width: 30px;
 			height: 30px;
@@ -210,26 +221,35 @@ export default {
 			border-radius: 50%;
 			color: white;
 			transition: background-color 0.3s;
+
 			&:hover {
 				background-color: #f79f24;
 			}
+
 			img {
 				max-height: 14px;
 			}
 		}
 	}
+
 	&__about {
 		display: flex;
 		align-content: center;
 		justify-content: center;
 		gap: 30px;
 		margin-right: 30px;
+
+		@media (max-width: 768px) {
+			flex-direction: column;
+		}
+
 		&-item {
 			display: flex;
 			align-items: center;
 			gap: 15px;
-			min-width: 220px;
+			min-width: 190px;
 		}
+
 		&-icon {
 			width: 38px;
 			height: 38px;
@@ -238,10 +258,12 @@ export default {
 			display: flex;
 			align-items: center;
 			justify-content: center;
+
 			img {
 				max-height: 12px;
 			}
 		}
+
 		&-title {
 			text-transform: uppercase;
 			font-size: 12px;
@@ -249,6 +271,7 @@ export default {
 			line-height: 1.8;
 			font-weight: 400;
 		}
+
 		&-subtitle {
 			font-size: 12px;
 			line-height: 1.8;
@@ -256,6 +279,7 @@ export default {
 			color: #ffffffcc;
 		}
 	}
+
 	&__bot {
 		.container {
 			display: flex;
@@ -263,23 +287,136 @@ export default {
 			justify-content: flex-start;
 		}
 	}
+
 	&__nav {
 		display: flex;
 		align-content: center;
 		justify-content: center;
 		width: max-content;
+
 		&-btn {
 			padding: 16px;
 			font-weight: 500;
 			font-size: 14px;
 			transition: background-color 0.3s;
 			background-color: white;
+
 			&.active {
 				color: white;
 			}
+
 			&.active,
 			&:hover {
 				background-color: #f79f24;
+			}
+		}
+	}
+}
+
+
+.nav {
+	&__open {
+		display: none;
+		justify-content: center;
+		align-items: center;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+
+		@media (max-width: 768px) {
+			display: flex;
+		}
+
+		&-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.btn-elem {
+				position: relative;
+				width: 30px;
+				height: 2.5px;
+				border-radius: 10px;
+				background: white;
+				transition: transform 0.2s linear, top 0.2s linear 0.2s;
+
+				&::before {
+					position: absolute;
+					content: "";
+					display: block;
+					width: 30px;
+					height: 2.5px;
+					border-radius: 10px;
+					top: -8px;
+					background: white;
+					transition: transform 0.2s linear, top 0.2s linear 0.2s;
+				}
+
+				&::after {
+					position: absolute;
+					content: "";
+					display: block;
+					width: 30px;
+					height: 2.5px;
+					border-radius: 10px;
+					top: 8px;
+					background: white;
+					transition: transform 0.2s linear, top 0.2s linear 0.2s;
+				}
+			}
+		}
+	}
+
+	&__exit {
+		display: none;
+		justify-content: center;
+		align-items: center;
+		width: 40px;
+		height: 40px;
+		cursor: pointer;
+		position: absolute;
+		right: 15px;
+		top: 20px;
+
+		@media (max-width: 768px) {
+			display: flex;
+		}
+
+		&-btn {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			.btn-elem {
+				position: relative;
+				width: 30px;
+				height: 2.5px;
+				border-radius: 10px;
+				background: transparent;
+
+				&::before {
+					position: absolute;
+					content: "";
+					display: block;
+					width: 30px;
+					height: 2.5px;
+					border-radius: 10px;
+					transform: rotate(45deg);
+					top: 0;
+					background: white;
+				}
+
+				&::after {
+					position: absolute;
+					content: "";
+					display: block;
+					width: 30px;
+					height: 2.5px;
+					border-radius: 10px;
+					background: white;
+					transform: rotate(-45deg);
+					top: 0;
+				}
 			}
 		}
 	}
