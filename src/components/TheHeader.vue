@@ -1,12 +1,13 @@
 <template>
 	<header class="header">
+		<div :class="{ active: isOpenBurger }" class="filter"></div>
 		<div class="header__top">
 			<div class="container">
 				<a class="logo" href="#">
 					<p>GGTrade<span>.</span></p>
 				</a>
-				<div class="header__features">
-					<div class="nav__exit">
+				<div :class="{ active: isOpenBurger }" class="header__features">
+					<div @click="toggleBurgerActive()" class="nav__exit">
 						<div class="nav__exit-btn">
 							<div class="btn-elem"></div>
 						</div>
@@ -58,7 +59,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="nav__open">
+				<div @click="toggleBurgerActive()" class="nav__open">
 					<div class="nav__open-btn">
 						<div class="btn-elem"></div>
 					</div>
@@ -129,6 +130,11 @@
 
 <script>
 export default {
+	data() {
+		return {
+			isOpenBurger: false
+		};
+	},
 	methods: {
 		setActiveButton(buttonIndex) {
 			const buttons = document.querySelectorAll(".nav-button");
@@ -141,11 +147,37 @@ export default {
 				}
 			});
 		},
+		toggleBurgerActive() {
+			this.isOpenBurger = !this.isOpenBurger;
+			if (this.isOpenBurger) {
+				document.body.classList.add("of");
+			} else {
+				document.body.classList.remove("of");
+			}
+		},
 	},
 };
 </script>
 
 <style lang="scss" scoped>
+.filter {
+	z-index: 98;
+	background-color: rgba(0, 0, 0, 0.3);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: .3s all;
+}
+
+.filter.active {
+	opacity: 1;
+	visibility: visible;
+}
+
 .header {
 	&__top {
 		background-color: #252525;
@@ -184,20 +216,24 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 
-		&.active {}
+		&.active {
+			transform: translateX(0);
+		}
 
 		@media (max-width: 768px) {
 			flex-direction: column;
 			row-gap: 30px;
 			padding: 75px 0 20px;
 			position: fixed;
-			left: 0;
+			right: 0;
+			transform: translateX(100%);
 			top: 0;
 			z-index: 99;
 			background-color: #252525;
 			height: 100%;
 			max-width: 400px;
 			width: 100%;
+			transition: .5s transform;
 		}
 	}
 
