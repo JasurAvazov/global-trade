@@ -68,7 +68,7 @@ export default {
 			border-radius: 4px;
 			display: flex;
 			flex-direction: column;
-			align-content: center;
+			align-items: center;
 			justify-content: center;
 		}
 		&-input {

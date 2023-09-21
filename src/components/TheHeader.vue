@@ -223,7 +223,7 @@ export default {
 
 	&__about {
 		display: flex;
-		align-content: center;
+		align-items: center;
 		justify-content: center;
 		gap: 30px;
 		margin-right: 30px;
@@ -279,7 +279,7 @@ export default {
 
 	&__nav {
 		display: flex;
-		align-content: center;
+		align-items: center;
 		justify-content: center;
 		width: max-content;
 		ul {

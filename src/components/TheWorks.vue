@@ -45,8 +45,6 @@
 <script></script>
 
 <style lang="scss" scoped>
-.works {
-}
 .container {
 	display: flex;
 	justify-content: center;
@@ -84,7 +82,7 @@
 	background-color: red;
 	&:hover {
 		.card-inner {
-			background-color: rgba(0, 0, 0, 0.329);
+			background-color: #064bcba9;
 		}
 		.text-anim {
 			transform: translateY(0);

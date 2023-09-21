@@ -70,7 +70,7 @@ watchEffect(() => {
 	&__items {
 		display: flex;
 		flex-direction: column;
-		align-content: center;
+		align-items: center;
 		justify-content: center;
 		overflow: hidden;
 		border-radius: 4px;
