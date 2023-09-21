@@ -20,6 +20,12 @@
 
 <script>
 export default {
+	data() {
+		return {
+			username: "",
+			password: "",
+		};
+	},
 	methods: {
 		login() {
 			if (this.username === "" && this.password === "") {
