@@ -35,6 +35,35 @@
 								</p>
 							</div>
 						</div>
+						<nav class="header__nav">
+							<ul>
+								<li>
+									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '' }">
+										Главная
+									</router-link>
+								</li>
+								<li>
+									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#works' }">
+										Работы
+									</router-link>
+								</li>
+								<li>
+									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#feedbacks' }">
+										Отзывы
+									</router-link>
+								</li>
+								<li>
+									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#prices' }">
+										Сервисы
+									</router-link>
+								</li>
+								<li>
+									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#contacts' }">
+										Контакты
+									</router-link>
+								</li>
+							</ul>
+						</nav>
 					</div>
 					<ul class="header__links">
 						<li>
@@ -71,42 +100,27 @@
 				<nav class="header__nav">
 					<ul>
 						<li>
-							<router-link
-								class="header__nav-btn"
-								:to="{ name: 'home', hash: '' }"
-							>
+							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '' }">
 								Главная
 							</router-link>
 						</li>
 						<li>
-							<router-link
-								class="header__nav-btn"
-								:to="{ name: 'home', hash: '#works' }"
-							>
+							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#works' }">
 								Работы
 							</router-link>
 						</li>
 						<li>
-							<router-link
-								class="header__nav-btn"
-								:to="{ name: 'home', hash: '#feedbacks' }"
-							>
+							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#feedbacks' }">
 								Отзывы
 							</router-link>
 						</li>
 						<li>
-							<router-link
-								class="header__nav-btn"
-								:to="{ name: 'home', hash: '#prices' }"
-							>
+							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#prices' }">
 								Сервисы
 							</router-link>
 						</li>
 						<li>
-							<router-link
-								class="header__nav-btn"
-								:to="{ name: 'home', hash: '#contacts' }"
-							>
+							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#contacts' }">
 								Контакты
 							</router-link>
 						</li>
@@ -171,6 +185,33 @@ export default {
 	&__top {
 		background-color: #252525;
 
+		.header__nav {
+			width: 100%;
+
+			ul {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			&-btn {
+				padding: 16px;
+				font-weight: 500;
+				font-size: 14px;
+				transition: background-color 0.3s;
+				background-color: transparent;
+				color: #ffffffcc;
+
+				&.active {
+					background-color: transparent;
+				}
+
+				&.active,
+				&:hover {
+					background-color: transparent;
+				}
+			}
+		}
+
 		.container {
 			padding: 25px 15px;
 			display: flex;
@@ -205,9 +246,7 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 
-		&.active {
-			transform: translateX(0);
-		}
+
 
 		@media (max-width: 768px) {
 			flex-direction: column;
@@ -223,6 +262,14 @@ export default {
 			max-width: 400px;
 			width: 100%;
 			transition: .5s transform;
+		}
+
+		&.active {
+			transform: translateX(0);
+
+			@media (max-width: 480px) {
+				max-width: 100%;
+			}
 		}
 	}
 
@@ -315,20 +362,23 @@ export default {
 
 	&__nav {
 		display: flex;
-		align-content: center;
+		align-items: center;
 		justify-content: center;
 		width: max-content;
+
 		ul {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
+
 		li {
 			list-style: none;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
+
 		&-btn {
 			padding: 16px;
 			font-weight: 500;
