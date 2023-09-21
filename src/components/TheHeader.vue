@@ -69,59 +69,48 @@
 		<div class="header__bot">
 			<div class="container">
 				<nav class="header__nav">
-					<a href="#" class="header__nav-btn">Главная</a>
-					<a href="#works" class="header__nav-btn">Работы</a>
-					<a href="#feedbacks" class="header__nav-btn">Отзывы</a>
-					<a href="#prices" class="header__nav-btn">Сервисы</a>
-					<a href="#contacts" class="header__nav-btn">Контакты</a>
-					<!-- <router-link to="/" custom v-slot="{ navigate }">
-						<button
-							class="header__nav-btn nav-button active"
-							@click="
-								setActiveButton(0);
-								navigate();
-							"
-							role="link"
-						>
-							Главная
-						</button>
-					</router-link>
-					<router-link to="/works" custom v-slot="{ navigate }">
-						<button
-							class="header__nav-btn nav-button"
-							@click="
-								setActiveButton(1);
-								navigate();
-							"
-							role="link"
-						>
-							Работы
-						</button>
-					</router-link>
-					<router-link to="/services" custom v-slot="{ navigate }">
-						<button
-							class="header__nav-btn nav-button"
-							@click="
-								setActiveButton(2);
-								navigate();
-							"
-							role="link"
-						>
-							Сервисы
-						</button>
-					</router-link>
-					<router-link to="/contacts" custom v-slot="{ navigate }">
-						<button
-							class="header__nav-btn nav-button"
-							@click="
-								setActiveButton(3);
-								navigate();
-							"
-							role="link"
-						>
-							Контакты
-						</button>
-					</router-link> -->
+					<ul>
+						<li>
+							<router-link
+								class="header__nav-btn"
+								:to="{ name: 'home', hash: '' }"
+							>
+								Главная
+							</router-link>
+						</li>
+						<li>
+							<router-link
+								class="header__nav-btn"
+								:to="{ name: 'home', hash: '#works' }"
+							>
+								Работы
+							</router-link>
+						</li>
+						<li>
+							<router-link
+								class="header__nav-btn"
+								:to="{ name: 'home', hash: '#feedbacks' }"
+							>
+								Отзывы
+							</router-link>
+						</li>
+						<li>
+							<router-link
+								class="header__nav-btn"
+								:to="{ name: 'home', hash: '#prices' }"
+							>
+								Сервисы
+							</router-link>
+						</li>
+						<li>
+							<router-link
+								class="header__nav-btn"
+								:to="{ name: 'home', hash: '#contacts' }"
+							>
+								Контакты
+							</router-link>
+						</li>
+					</ul>
 				</nav>
 			</div>
 		</div>
@@ -329,7 +318,17 @@ export default {
 		align-content: center;
 		justify-content: center;
 		width: max-content;
-
+		ul {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		li {
+			list-style: none;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 		&-btn {
 			padding: 16px;
 			font-weight: 500;
