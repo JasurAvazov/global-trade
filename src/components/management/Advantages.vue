@@ -1,59 +1,43 @@
 <template>
-	<div class="heroes">
+	<div class="advantages">
 		<div class="container">
-			<h1>Управление Главным Слайдом</h1>
+			<h1>Управление преимуществами</h1>
 
-			<form @submit.prevent="addHero">
+			<form @submit.prevent="addAdvantage">
 				<input
 					type="file"
 					ref="fileInput"
 					accept="image/*"
 					@change="handleFileChange"
-					:key="newHero.photoFile ? newHero.photoFile.name : 'empty'"
+					:key="newAdvantage.photoFile ? newAdvantage.photoFile.name : 'empty'"
 				/>
 				<textarea
-					v-model="newHero.subtitle"
+					v-model="newAdvantage.text"
 					placeholder="Введите подзаголовок"
 				></textarea>
 				<textarea
-					v-model="newHero.title"
+					v-model="newAdvantage.title"
 					placeholder="Введите заголовок"
-				></textarea>
-				<textarea
-					v-model="newHero.button"
-					placeholder="Введите текст кнопки"
-				></textarea>
-				<textarea
-					v-model="newHero.buttonLink"
-					placeholder="Введите ссылку кнопки"
 				></textarea>
 				<button type="submit">Добавить слайд</button>
 			</form>
 
 			<ul>
-				<li v-for="hero in heroes" :key="hero.id">
+				<li v-for="item in items" :key="item.id">
 					<div>
 						<p>photo:</p>
 						<br />
-						<img :src="hero.photoURL" alt="Фотография слайда" />
+						<img :src="item.photoURL" alt="Фотография слайда" />
 					</div>
 					<p>
-						subtitle:<br />
-						{{ hero.subtitle }}
+						text:<br />
+						{{ item.text }}
 					</p>
 					<p>
 						title:<br />
-						{{ hero.title }}
+						{{ item.title }}
 					</p>
-					<p>
-						button:<br />
-						{{ hero.button }}
-					</p>
-					<p>
-						buttonLink:<br />
-						{{ hero.buttonLink }}
-					</p>
-					<button @click="deleteHero(hero.id)">Удалить</button>
+					<button @click="deleteAdvantage(item.id)">Удалить</button>
 				</li>
 			</ul>
 		</div>
@@ -71,71 +55,65 @@ import {
 } from "firebase/storage";
 
 const store = useStore();
-const newHero = ref({
-	subtitle: "",
+const newAdvantage = ref({
+	text: "",
 	title: "",
-	button: "",
-	buttonLink: "",
 	photoFile: null,
 });
-const heroes = ref([]);
+const items = ref([]);
 
-const fetchHeroes = async () => {
-	await store.dispatch("heroes/fetchItems");
-	heroes.value = store.getters["heroes/getItems"];
+const fetchAdvantages = async () => {
+	await store.dispatch("advantages/fetchItems");
+	items.value = store.getters["advantages/getItems"];
 };
 
-onMounted(fetchHeroes);
+onMounted(fetchAdvantages);
 
 const handleFileChange = (event) => {
 	const file = event.target.files[0];
-	newHero.value.photoFile = file;
+	newAdvantage.value.photoFile = file;
 };
 
-const addHero = async () => {
+const addAdvantage = async () => {
 	try {
 		const storage = getStorage();
 		const storageRefInstance = storageRef(
 			storage,
-			`heroes/${newHero.value.title}`
+			`advantages/${newAdvantage.value.title}`
 		);
-		await uploadBytes(storageRefInstance, newHero.value.photoFile);
+		await uploadBytes(storageRefInstance, newAdvantage.value.photoFile);
 
 		const photoURL = await getDownloadURL(storageRefInstance);
 
 		const newItem = {
-			subtitle: newHero.value.subtitle,
-			title: newHero.value.title,
-			button: newHero.value.button,
-			buttonLink: newHero.value.buttonLink,
+			text: newAdvantage.value.text,
+			title: newAdvantage.value.title,
 			created_at: new Date().toISOString(),
 			photoURL,
 		};
 
-		await store.dispatch("heroes/addItem", newItem);
+		await store.dispatch("advantages/addItem", newItem);
 
-		newHero.value = {
-			subtitle: "",
+		newAdvantage.value = {
+			text: "",
 			title: "",
-			button: "",
-			buttonLink: "",
 			photoFile: null,
 		};
 
-		fetchHeroes();
+		fetchAdvantages();
 	} catch (error) {
-		console.error("Error adding hero item:", error);
+		console.error("Error adding advantage item:", error);
 	}
 };
 
-const deleteHero = async (heroId) => {
-	await store.dispatch("heroes/deleteItem", heroId);
-	fetchHeroes();
+const deleteAdvantage = async (advantageId) => {
+	await store.dispatch("advantages/deleteItem", advantageId);
+	fetchAdvantages();
 };
 </script>
 
 <style lang="scss" scoped>
-.heroes {
+.advantages {
 	.container {
 		padding: 50px 15px;
 	}

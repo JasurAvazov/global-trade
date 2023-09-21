@@ -103,7 +103,7 @@ export default {
 	@media (min-width: 993px) {
 		&:hover {
 			.card-inner {
-				background-color: #064bcba9;
+				background-color: #0000008f;
 			}
 
 			.text-anim {
@@ -157,7 +157,7 @@ export default {
 		transition: background-color 0.2s;
 
 		@media (max-width: 992px) {
-			background-color: #064bcba9;
+			background-color: #0000008f;
 		}
 	}
 
