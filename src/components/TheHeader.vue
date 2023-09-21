@@ -1,6 +1,6 @@
 <template>
 	<header class="header">
-		<div :class="{ active: isOpenBurger }" class="filter"></div>
+		<div @click="toggleBurgerActive()" :class="{ active: isOpenBurger }" class="filter"></div>
 		<div class="header__top">
 			<div class="container">
 				<a class="logo" href="#">
@@ -186,7 +186,12 @@ export default {
 		background-color: #252525;
 
 		.header__nav {
+			display: none;
 			width: 100%;
+
+			@media (max-width: 768px) {
+				display: flex;
+			}
 
 			ul {
 				flex-direction: column;
@@ -306,13 +311,14 @@ export default {
 
 	&__about {
 		display: flex;
-		align-content: center;
+		align-items: center;
 		justify-content: center;
 		gap: 30px;
 		margin-right: 30px;
 
 		@media (max-width: 768px) {
 			flex-direction: column;
+			margin-right: 0;
 		}
 
 		&-item {
@@ -353,6 +359,10 @@ export default {
 	}
 
 	&__bot {
+		@media (max-width: 768px) {
+			display: none;
+		}
+
 		.container {
 			display: flex;
 			align-items: center;
