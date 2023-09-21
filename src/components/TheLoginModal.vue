@@ -30,7 +30,7 @@ export default {
 	},
 	methods: {
 		login() {
-			if (this.username === "admin" && this.password === "admin123") {
+			if (this.username === "" && this.password === "") {
 				this.$store.commit("log/setLoggedIn", true);
 				this.$router.push({ name: "management" });
 				this.$emit("close");
@@ -73,7 +73,7 @@ export default {
 			border-radius: 4px;
 			display: flex;
 			flex-direction: column;
-			align-content: center;
+			align-items: center;
 			justify-content: center;
 		}
 
