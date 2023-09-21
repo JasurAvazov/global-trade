@@ -1,6 +1,9 @@
 <template>
 	<div class="login__modal">
-		<div class="login__modal-bg" @click="closeLoginModal"></div>
+		<div
+			class="login__modal-bg"
+			@click="closeLoginModal"
+		></div>
 		<div class="login__modal-inner">
 			<input
 				class="login__modal-input"
@@ -21,8 +24,8 @@
 export default {
 	data() {
 		return {
-			username: "",
-			password: "",
+			username: "admin",
+			password: "admin123",
 		};
 	},
 	methods: {
@@ -54,6 +57,7 @@ export default {
 		justify-content: center;
 		align-items: center;
 		z-index: 100;
+
 		&-bg {
 			width: 100%;
 			height: 100%;
@@ -61,6 +65,7 @@ export default {
 			background-color: black;
 			opacity: 0.5;
 		}
+
 		&-inner {
 			padding: 50px 100px;
 			background-color: #fff;
@@ -71,6 +76,7 @@ export default {
 			align-items: center;
 			justify-content: center;
 		}
+
 		&-input {
 			padding: 10px 15px;
 			background-color: #fff;
@@ -78,6 +84,7 @@ export default {
 			border-radius: 4px;
 			margin-bottom: 1rem;
 		}
+
 		button {
 			padding: 10px 15px;
 			background-color: green;

@@ -11,13 +11,19 @@ import TheAdvantages from '../components/TheAdvantages.vue'
 
 <template>
   <main>
+    <!-- готов к проверке -->
     <Hero />
+
+    <!-- готов к проверке -->
     <Intro />
+
+    
     <Works />
+    <!--
     <TheAdvantages />
     <Feedbacks />
     <TheCounter />
     <Prices />
-    <TheCTA />
+    <TheCTA /> -->
   </main>
 </template>

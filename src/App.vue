@@ -13,7 +13,7 @@ export default {
   components: {
     TheHeader,
     TheFooter
-  }
+  },
 }
 </script>
 
@@ -34,6 +34,10 @@ export default {
   &::-webkit-scrollbar-thumb {
     background-color: #252525;
   }
+}
+
+body {
+  min-width: 320px;
 }
 
 body.of {
