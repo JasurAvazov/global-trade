@@ -1,7 +1,7 @@
 <template>
   <TheHeader />
   <router-view/>
-  <TheFooter />
+  <!-- <TheFooter /> -->
 </template>
 
 <script>

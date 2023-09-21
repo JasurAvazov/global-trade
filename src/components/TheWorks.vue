@@ -59,6 +59,10 @@ export default {
 	align-items: center;
 	flex-direction: column;
 	padding: 100px 15px;
+
+	@media (max-width: 768px) {
+		padding: 65px 15px;
+	}
 }
 
 .cards {
@@ -76,6 +80,10 @@ export default {
 	line-height: 1.5;
 	color: rgba(0, 0, 0, 0.8);
 	margin-bottom: 56px;
+
+	@media (max-width: 768px) {
+		margin-bottom: 20px;
+	}
 }
 
 .subtitle {
@@ -92,14 +100,16 @@ export default {
 	height: 240px;
 	position: relative;
 
-	&:hover {
-		.card-inner {
-			background-color: #064bcba9;
-		}
+	@media (min-width: 993px) {
+		&:hover {
+			.card-inner {
+				background-color: #064bcba9;
+			}
 
-		.text-anim {
-			transform: translateY(0);
-			opacity: 1;
+			.text-anim {
+				transform: translateY(0);
+				opacity: 1;
+			}
 		}
 	}
 
@@ -120,6 +130,11 @@ export default {
 		transform: translateY(100%);
 		opacity: 0;
 		transition: transform .2s, opacity .2s;
+
+		@media (max-width: 992px) {
+			transform: translateY(0);
+			opacity: 1;
+		}
 	}
 
 	&-inner {
@@ -132,6 +147,10 @@ export default {
 		flex-direction: column;
 		justify-content: flex-end;
 		transition: background-color 0.2s;
+
+		@media (max-width: 992px) {
+			background-color: #064bcba9;
+		}
 	}
 
 	img {
@@ -142,4 +161,5 @@ export default {
 		top: 0;
 		left: 0;
 	}
-}</style>
+}
+</style>
