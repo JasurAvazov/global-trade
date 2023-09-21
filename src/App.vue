@@ -36,6 +36,11 @@ export default {
   }
 }
 
+body.of {
+  overflow: hidden;
+}
+
+
 .container {
   max-width: 1200px;
   width: 100%;
@@ -51,4 +56,5 @@ a {
 button {
   border: 0;
   cursor: pointer;
-}</style>
+}
+</style>

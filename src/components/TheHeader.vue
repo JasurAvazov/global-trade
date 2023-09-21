@@ -1,12 +1,13 @@
 <template>
 	<header class="header">
+		<div @click="toggleBurgerActive()" :class="{ active: isOpenBurger }" class="filter"></div>
 		<div class="header__top">
 			<div class="container">
 				<a class="logo" href="#">
 					<p>GGTrade<span>.</span></p>
 				</a>
-				<div class="header__features">
-					<div class="nav__exit">
+				<div :class="{ active: isOpenBurger }" class="header__features">
+					<div @click="toggleBurgerActive()" class="nav__exit">
 						<div class="nav__exit-btn">
 							<div class="btn-elem"></div>
 						</div>
@@ -34,6 +35,35 @@
 								</p>
 							</div>
 						</div>
+						<nav class="header__nav">
+							<ul>
+								<li>
+									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '' }">
+										Главная
+									</router-link>
+								</li>
+								<li>
+									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#works' }">
+										Работы
+									</router-link>
+								</li>
+								<li>
+									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#feedbacks' }">
+										Отзывы
+									</router-link>
+								</li>
+								<li>
+									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#prices' }">
+										Сервисы
+									</router-link>
+								</li>
+								<li>
+									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#contacts' }">
+										Контакты
+									</router-link>
+								</li>
+							</ul>
+						</nav>
 					</div>
 					<ul class="header__links">
 						<li>
@@ -58,7 +88,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="nav__open">
+				<div @click="toggleBurgerActive()" class="nav__open">
 					<div class="nav__open-btn">
 						<div class="btn-elem"></div>
 					</div>
@@ -70,42 +100,27 @@
 				<nav class="header__nav">
 					<ul>
 						<li>
-							<router-link
-								class="header__nav-btn"
-								:to="{ name: 'home', hash: '' }"
-							>
+							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '' }">
 								Главная
 							</router-link>
 						</li>
 						<li>
-							<router-link
-								class="header__nav-btn"
-								:to="{ name: 'home', hash: '#works' }"
-							>
+							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#works' }">
 								Работы
 							</router-link>
 						</li>
 						<li>
-							<router-link
-								class="header__nav-btn"
-								:to="{ name: 'home', hash: '#feedbacks' }"
-							>
+							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#feedbacks' }">
 								Отзывы
 							</router-link>
 						</li>
 						<li>
-							<router-link
-								class="header__nav-btn"
-								:to="{ name: 'home', hash: '#prices' }"
-							>
+							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#prices' }">
 								Сервисы
 							</router-link>
 						</li>
 						<li>
-							<router-link
-								class="header__nav-btn"
-								:to="{ name: 'home', hash: '#contacts' }"
-							>
+							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#contacts' }">
 								Контакты
 							</router-link>
 						</li>
@@ -118,6 +133,11 @@
 
 <script>
 export default {
+	data() {
+		return {
+			isOpenBurger: false
+		};
+	},
 	methods: {
 		setActiveButton(buttonIndex) {
 			const buttons = document.querySelectorAll(".nav-button");
@@ -130,14 +150,72 @@ export default {
 				}
 			});
 		},
+		toggleBurgerActive() {
+			this.isOpenBurger = !this.isOpenBurger;
+			if (this.isOpenBurger) {
+				document.body.classList.add("of");
+			} else {
+				document.body.classList.remove("of");
+			}
+		},
 	},
 };
 </script>
 
 <style lang="scss" scoped>
+.filter {
+	z-index: 98;
+	background-color: rgba(0, 0, 0, 0.3);
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition: .3s all;
+}
+
+.filter.active {
+	opacity: 1;
+	visibility: visible;
+}
+
 .header {
 	&__top {
 		background-color: #252525;
+
+		.header__nav {
+			display: none;
+			width: 100%;
+
+			@media (max-width: 768px) {
+				display: flex;
+			}
+
+			ul {
+				flex-direction: column;
+				align-items: center;
+			}
+
+			&-btn {
+				padding: 16px;
+				font-weight: 500;
+				font-size: 14px;
+				transition: background-color 0.3s;
+				background-color: transparent;
+				color: #ffffffcc;
+
+				&.active {
+					background-color: transparent;
+				}
+
+				&.active,
+				&:hover {
+					background-color: transparent;
+				}
+			}
+		}
 
 		.container {
 			padding: 25px 15px;
@@ -173,20 +251,30 @@ export default {
 		align-items: center;
 		justify-content: space-between;
 
-		&.active {}
+
 
 		@media (max-width: 768px) {
 			flex-direction: column;
 			row-gap: 30px;
 			padding: 75px 0 20px;
 			position: fixed;
-			left: 0;
+			right: 0;
+			transform: translateX(100%);
 			top: 0;
 			z-index: 99;
 			background-color: #252525;
 			height: 100%;
 			max-width: 400px;
 			width: 100%;
+			transition: .5s transform;
+		}
+
+		&.active {
+			transform: translateX(0);
+
+			@media (max-width: 480px) {
+				max-width: 100%;
+			}
 		}
 	}
 
@@ -230,6 +318,7 @@ export default {
 
 		@media (max-width: 768px) {
 			flex-direction: column;
+			margin-right: 0;
 		}
 
 		&-item {
@@ -270,6 +359,10 @@ export default {
 	}
 
 	&__bot {
+		@media (max-width: 768px) {
+			display: none;
+		}
+
 		.container {
 			display: flex;
 			align-items: center;
@@ -282,17 +375,20 @@ export default {
 		align-items: center;
 		justify-content: center;
 		width: max-content;
+
 		ul {
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
+
 		li {
 			list-style: none;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
+
 		&-btn {
 			padding: 16px;
 			font-weight: 500;
