@@ -68,7 +68,6 @@ import {
 	uploadBytes,
 	getDownloadURL,
 } from "firebase/storage";
-import { db } from "../../firebase";
 
 const store = useStore();
 const newHero = ref({

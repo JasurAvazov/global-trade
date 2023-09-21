@@ -1,18 +1,21 @@
 <template>
   <div class="management">
-    <Hero />
+    <Heroes />
+    <Works />
     <Feedbacks />
   </div>
 </template>
 
 <script>
-import Hero from "../components/management/Hero.vue";
+import Heroes from "../components/management/Heroes.vue";
+import Works from "../components/management/Works.vue";
 import Feedbacks from "../components/management/Feedbacks.vue";
 
 export default {
   name: 'ManagementView',
   components: {
-    Hero,
+    Heroes,
+    Works,
     Feedbacks,
   }
 }

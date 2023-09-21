@@ -4,37 +4,15 @@
 			<p class="subtitle">Работы</p>
 			<h1 class="title">Работы</h1>
 			<div class="cards">
-				<div class="card">
+				<div class="card" v-for="item in items" :key="item.id">
 					<img
-						src="../assets/img/hero.jpeg"
+                        :src="item.photoURL"
 						alt=""
 						draggable="false"
 					/>
 					<div class="card-inner">
-						<h4 class="card-title text-anim">dsadsad</h4>
-						<p class="card-subtitle text-anim">dsadsadasd</p>
-					</div>
-				</div>
-				<div class="card">
-					<img
-						src="../assets/img/hero.jpeg"
-						alt=""
-						draggable="false"
-					/>
-					<div class="card-inner">
-						<h4 class="card-title text-anim">dsadsad</h4>
-						<p class="card-subtitle text-anim">dsadsadasd</p>
-					</div>
-				</div>
-				<div class="card">
-					<img
-						src="../assets/img/hero.jpeg"
-						alt=""
-						draggable="false"
-					/>
-					<div class="card-inner">
-						<h4 class="card-title text-anim">dsadsad</h4>
-						<p class="card-subtitle text-anim">dsadsadasd</p>
+						<h4 class="card-title text-anim">{{ item.title }}</h4>
+						<p class="card-subtitle text-anim">{{ item.subtitle }}</p>
 					</div>
 				</div>
 			</div>
@@ -42,7 +20,30 @@
 	</div>
 </template>
 
-<script></script>
+<script>
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+
+export default {
+	setup() {
+		const store = useStore();
+		const items = ref([]);
+		const reversedItems = ref([]);
+
+		const fetchItems = async () => {
+			await store.dispatch("works/fetchItems");
+			items.value = store.getters["works/getItems"];
+		};
+
+		onMounted(() => {
+			fetchItems();
+			reversedItems.value = items.value.slice().reverse();
+		});
+
+		return { items, reversedItems };
+	},
+};
+</script>
 
 <style lang="scss" scoped>
 .container {
@@ -79,7 +80,6 @@
 	width: calc(100% / 3 - 10px);
 	height: 240px;
 	position: relative;
-	background-color: red;
 	&:hover {
 		.card-inner {
 			background-color: #064bcba9;
