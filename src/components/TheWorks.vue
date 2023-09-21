@@ -81,7 +81,7 @@ export default {
 	color: rgba(0, 0, 0, 0.8);
 	margin-bottom: 56px;
 
-	@media (max-width: 768px) {
+	@media (max-width: 992px) {
 		margin-bottom: 20px;
 	}
 }
@@ -111,6 +111,14 @@ export default {
 				opacity: 1;
 			}
 		}
+	}
+
+	@media (max-width: 880px) {
+		width: calc(50% - 5px);
+	}
+
+	@media (max-width: 576px) {
+		width: 100%;
 	}
 
 	&-title {

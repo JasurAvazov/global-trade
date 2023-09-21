@@ -36,14 +36,24 @@
 	background-color: #edeff5;
 	display: flex;
 	justify-content: space-between;
-    .container{
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 100px 15px 100px;
-    }
+
+	.container {
+		display: flex;
+		align-items: center;
+		justify-content: space-evenly;
+		padding: 100px 15px;
+		flex-wrap: wrap;
+		column-gap: 16px;
+		row-gap: 36px;
+
+		@media (max-width: 992px) {
+			padding: 60px 15px;
+		}
+	}
+
 	.advantage {
 		text-align: center;
+
 		.circle {
 			width: 120px;
 			height: 120px;
@@ -53,17 +63,20 @@
 			display: flex;
 			justify-content: center;
 			align-items: center;
-            margin-bottom: 20px;
+			margin-bottom: 20px;
+
 			img {
 				max-width: 80%;
 				max-height: 80%;
 			}
 		}
+
 		.advantage-title {
 			color: #202020;
 			font-size: 20px;
-            margin-bottom: 10px;
+			margin-bottom: 10px;
 		}
+
 		.advantage-text {
 			color: gray;
 			font-size: 16px;

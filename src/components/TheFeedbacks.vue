@@ -1,17 +1,41 @@
 <template>
-	<section class="feedbacks" id="feedbacks">
+	<section
+		class="feedbacks"
+		id="feedbacks"
+	>
 		<div class="container">
 			<p class="feedbacks-title">Счастливые клиенты и отзывы</p>
 			<swiper
-				:slidesPerView="3"
-				:spaceBetween="40"
+				:slidesPerView="1"
+				:spaceBetween="20"
 				:pagination="{
 					clickable: true,
+				}"
+				:breakpoints="{
+					1000: {
+						slidesPerView: 3,
+						spaceBetween: 40,
+					},
+					768: {
+						slidesPerView: 2.5,
+						spaceBetween: 25,
+					},
+					576: {
+						slidesPerView: 1.7,
+						spaceBetween: 20,
+					},
+					480: {
+						slidesPerView: 1.4,
+						spaceBetween: 20,
+					},
 				}"
 				:modules="modules"
 				class="mySwiper"
 			>
-				<swiper-slide v-for="item in items" :key="item.id">
+				<swiper-slide
+					v-for="item in items"
+					:key="item.id"
+				>
 					<div class="quote">
 						<img
 							src="../assets/img/icons/quote-left.svg"
@@ -72,6 +96,7 @@ export default {
 <style lang="scss" scoped>
 .feedbacks {
 	overflow: hidden;
+
 	.container {
 		padding: 100px 15px 30px;
 		display: flex;
@@ -79,14 +104,22 @@ export default {
 		justify-content: center;
 		flex-direction: column;
 	}
+
 	&-title {
 		font-size: 24px;
 		font-weight: 700;
 		line-height: 1.5;
 		margin-bottom: 60px;
+		text-align: center;
+
+		@media (max-width: 576px) {
+			margin-bottom: 35px;
+		}
 	}
+
 	.swiper {
 		overflow: visible;
+
 		&-slide {
 			display: flex;
 			align-items: flex-start;
@@ -97,6 +130,11 @@ export default {
 			box-shadow: 0px 0px 40px 5px rgba(0, 0, 0, 0.253);
 			min-height: 200px;
 			margin-bottom: 80px;
+
+			@media (max-width: 576px) {
+				margin-bottom: 55px;
+			}
+
 			p {
 				width: 100%;
 				text-align: start;
@@ -104,7 +142,12 @@ export default {
 				line-height: 1.5;
 				margin-bottom: 20px;
 				color: gray;
+
+				@media (max-width: 576px) {
+					font-size: 14px;
+				}
 			}
+
 			.quote {
 				position: absolute;
 				top: 0;
@@ -117,6 +160,7 @@ export default {
 				display: flex;
 				align-items: center;
 				justify-content: center;
+
 				img {
 					height: 14px;
 					width: 13px;

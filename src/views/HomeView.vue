@@ -17,13 +17,19 @@ import TheAdvantages from '../components/TheAdvantages.vue'
     <!-- готов к проверке -->
     <Intro />
 
-    
+    <!-- готов к проверке -->
     <Works />
-    
+
+    <!-- готов к проверке -->
     <TheAdvantages />
+
+    <!-- готов к проверке -->
     <Feedbacks />
+
     <TheCounter />
-    <Prices />
-    <TheCTA />
+
+    <!--
+    <Prices /> -->
+    <!-- <TheCTA /> -->
   </main>
 </template>
