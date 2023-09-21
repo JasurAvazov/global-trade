@@ -96,7 +96,7 @@ export default {
 }
 
 .card {
-	width: calc(100% / 3 - 10px);
+	width: calc(100% / 3 - 7px);
 	height: 240px;
 	position: relative;
 
