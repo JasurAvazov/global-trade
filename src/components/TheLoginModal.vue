@@ -7,12 +7,10 @@
 		<div class="login__modal-inner">
 			<input
 				class="login__modal-input"
-				v-model="username"
 				placeholder="Логин"
 			/>
 			<input
 				class="login__modal-input"
-				v-model="password"
 				placeholder="Пароль"
 			/>
 			<button @click="login">Войти</button>
@@ -22,12 +20,6 @@
 
 <script>
 export default {
-	data() {
-		return {
-			username: "admin",
-			password: "admin123",
-		};
-	},
 	methods: {
 		login() {
 			if (this.username === "" && this.password === "") {
