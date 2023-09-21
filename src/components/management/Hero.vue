@@ -3,7 +3,6 @@
 		<div class="container">
 			<h1>Управление Главным Слайдом</h1>
 
-			<!-- Форма для добавления героя -->
 			<form @submit.prevent="addHero">
 				<input
 					type="file"
@@ -30,7 +29,6 @@
 				<button type="submit">Добавить слайд</button>
 			</form>
 
-			<!-- Список героев -->
 			<ul>
 				<li v-for="hero in heroes" :key="hero.id">
 					<div>
@@ -70,7 +68,7 @@ import {
 	uploadBytes,
 	getDownloadURL,
 } from "firebase/storage";
-import { db } from "../../firebase"; // Проверьте, что вы правильно импортировали db из firebase.js
+import { db } from "../../firebase";
 
 const store = useStore();
 const newHero = ref({
@@ -96,7 +94,6 @@ const handleFileChange = (event) => {
 
 const addHero = async () => {
 	try {
-		// Загрузите изображение в Firebase Cloud Storage
 		const storage = getStorage();
 		const storageRefInstance = storageRef(
 			storage,
@@ -104,23 +101,19 @@ const addHero = async () => {
 		);
 		await uploadBytes(storageRefInstance, newHero.value.photoFile);
 
-		// Получите ссылку на загруженное изображение
 		const photoURL = await getDownloadURL(storageRefInstance);
 
-		// Создайте нового героя с ссылкой на изображение
 		const newItem = {
 			subtitle: newHero.value.subtitle,
 			title: newHero.value.title,
 			button: newHero.value.button,
 			buttonLink: newHero.value.buttonLink,
 			created_at: new Date().toISOString(),
-			photoURL, // Сохраните ссылку на изображение
+			photoURL,
 		};
 
-		// Добавьте нового героя в Firestore
 		await store.dispatch("heroes/addItem", newItem);
 
-		// Очистите форму после добавления
 		newHero.value = {
 			subtitle: "",
 			title: "",
@@ -129,7 +122,6 @@ const addHero = async () => {
 			photoFile: null,
 		};
 
-		// Обновите список героев
 		fetchHeroes();
 	} catch (error) {
 		console.error("Error adding hero item:", error);

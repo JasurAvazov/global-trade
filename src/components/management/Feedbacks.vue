@@ -3,16 +3,15 @@
 		<div class="container">
 			<h1>Управление Отзывами</h1>
 
-			<!-- Форма для добавления отзыва -->
 			<form @submit.prevent="addFeedback">
 				<textarea
 					v-model="newFeedback.paragraph"
 					placeholder="Введите отзыв"
+					required
 				></textarea>
 				<button type="submit">Добавить отзыв</button>
 			</form>
 
-			<!-- Список отзывов -->
 			<ul>
 				<li v-for="feedback in feedbacks" :key="feedback.id">
 					{{ feedback.paragraph }}
@@ -42,13 +41,13 @@ onMounted(fetchFeedbacks);
 
 const addFeedback = async () => {
 	await store.dispatch("feedbacks/addItem", newFeedback.value);
-	newFeedback.value = { paragraph: "" }; // Очистить форму после добавления
-	fetchFeedbacks(); // Обновить список отзывов
+	newFeedback.value = { paragraph: "" };
+	fetchFeedbacks();
 };
 
 const deleteFeedback = async (feedbackId) => {
 	await store.dispatch("feedbacks/deleteItem", feedbackId);
-	fetchFeedbacks(); // Обновить список отзывов после удаления
+	fetchFeedbacks();
 };
 </script>
 

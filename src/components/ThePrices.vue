@@ -30,7 +30,7 @@
     background-color: #edeff5;
 }
 .container{
-    padding: 100px 15px 50px;
+    padding: 100px 15px 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
