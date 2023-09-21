@@ -94,7 +94,7 @@ export default {
 
 	&:hover {
 		.card-inner {
-			background-color: #064bcba9;
+			background-color: #0000008f;
 		}
 
 		.text-anim {

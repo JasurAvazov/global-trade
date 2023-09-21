@@ -1,35 +1,41 @@
 <template>
 	<section class="our-advantages">
 		<div class="container">
-			<div class="advantage">
+			<div class="advantage" v-for="item in items" :key="item.id">
 				<div class="circle">
-					<!-- Вставьте свою иконку сюда -->
-					<!-- <img src="" alt="Иконка" /> -->
+					<img :src="item.photoURL" alt="Иконка" />
 				</div>
-				<h3 class="advantage-title">Достоинство 1</h3>
-				<p class="advantage-text">Описание достоинства 1 здесь.</p>
-			</div>
-
-			<div class="advantage">
-				<div class="circle">
-					<!-- Вставьте свою иконку сюда -->
-					<!-- <img src="" alt="Иконка" /> -->
-				</div>
-				<h3 class="advantage-title">Достоинство 2</h3>
-				<p class="advantage-text">Описание достоинства 2 здесь.</p>
-			</div>
-
-			<div class="advantage">
-				<div class="circle">
-					<!-- Вставьте свою иконку сюда -->
-					<!-- <img src="" alt="Иконка" /> -->
-				</div>
-				<h3 class="advantage-title">Достоинство 3</h3>
-				<p class="advantage-text">Описание достоинства 3 здесь.</p>
+				<h3 class="advantage-title">{{ item.title }}</h3>
+				<p class="advantage-text">{{ item.text }}</p>
 			</div>
 		</div>
 	</section>
 </template>
+
+<script>
+import { ref, onMounted } from "vue";
+import { useStore } from "vuex";
+
+export default {
+	setup() {
+		const store = useStore();
+		const items = ref([]);
+		const reversedItems = ref([]);
+
+		const fetchItems = async () => {
+			await store.dispatch("advantages/fetchItems");
+			items.value = store.getters["advantages/getItems"];
+		};
+
+		onMounted(() => {
+			fetchItems();
+			reversedItems.value = items.value.slice().reverse();
+		});
+
+		return { items, reversedItems };
+	},
+};
+</script>
 
 <style lang="scss" scoped>
 .our-advantages {
