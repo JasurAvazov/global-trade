@@ -84,6 +84,7 @@ export default {
 	font-weight: 600;
 	margin-bottom: 40px;
 	color: rgb(255, 255, 255);
+	text-shadow: 0 0px 10px rgba(255, 255, 255, 0.274);
 }
 
 .cta-description {
@@ -92,6 +93,7 @@ export default {
 	max-width: 800px;
 	color: rgb(255, 255, 255);
 	font-weight: 500;
+	text-shadow: 0 0px 10px rgba(255, 255, 255, 0.425);
 }
 
 .cta-button {

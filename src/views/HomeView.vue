@@ -1,6 +1,7 @@
 <script setup>
 import Hero from '../components/TheHero.vue'
 import Intro from '../components/TheIntro.vue'
+import Works from '../components/TheWorks.vue'
 import Prices from '../components/ThePrices.vue'
 import Feedbacks from '../components/TheFeedbacks.vue'
 import TheCounter from '../components/TheCounter.vue'
@@ -12,8 +13,9 @@ import TheAdvantages from '../components/TheAdvantages.vue'
   <main>
     <Hero />
     <Intro />
-    <Feedbacks />
+    <Works />
     <TheAdvantages />
+    <Feedbacks />
     <TheCounter />
     <Prices />
     <TheCTA />
