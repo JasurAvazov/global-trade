@@ -1,9 +1,15 @@
 <template>
-	<footer class="footer" id="contacts">
+	<footer
+		class="footer"
+		id="contacts"
+	>
 		<div class="container">
 			<ul class="footer__columns">
 				<li class="footer__column">
-					<a class="logo" href="#">
+					<a
+						class="logo"
+						href="#"
+					>
 						<p>GGTrade<span>.</span></p>
 					</a>
 					<p class="footer-text">
@@ -95,7 +101,10 @@
 							</a>
 						</li>
 						<li>
-							<img src="../assets/img/icons/phone.svg" alt="" />
+							<img
+								src="../assets/img/icons/phone.svg"
+								alt=""
+							/>
 							<a href="#"> +2 392 3929 210 </a>
 						</li>
 						<li>
@@ -111,7 +120,10 @@
 			</ul>
 		</div>
 	</footer>
-	<LoginModal v-if="showLoginModal" @close="closeLoginModal" />
+	<LoginModal
+		v-if="showLoginModal"
+		@close="closeLoginModal"
+	/>
 </template>
 
 <script>
@@ -140,37 +152,52 @@ export default {
 <style lang="scss" scoped>
 .footer {
 	background-color: #252525;
+
 	.container {
 		padding: 130px 15px 100px;
+
+		@media (max-width: 768px) {
+			padding: 80px 15px 40px;
+		}
 	}
+
 	&__columns {
 		display: flex;
 		align-items: flex-start;
 		justify-content: flex-start;
 		flex-wrap: wrap;
+		gap: 70px;
+		@media (max-width: 576px) {
+			gap: 40px;
+		}
 	}
+
 	&__column {
 		list-style: none;
-		max-width: calc(100% / 3);
+		max-width: 300px;
 		width: max-content;
-		padding-right: 112px;
 	}
+
 	.logo {
 		display: inline-block;
 		margin-bottom: 40px;
+
 		p {
 			font-size: 22px;
 			color: white;
 			font-weight: 800;
 			transition: color 0.3s;
+
 			&:hover {
 				color: #f79f24;
 			}
+
 			span {
 				color: #f79f24;
 			}
 		}
 	}
+
 	&-text {
 		color: #ffffffb3;
 		margin-bottom: 16px;
@@ -178,14 +205,17 @@ export default {
 		line-height: 1.8;
 		flex-wrap: 400;
 	}
+
 	&__links {
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
 		gap: 10px;
+
 		li {
 			list-style: none;
 		}
+
 		a {
 			width: 40px;
 			height: 40px;
@@ -195,20 +225,28 @@ export default {
 			background-color: #ffffff1a;
 			border-radius: 50%;
 			transition: background-color 0.3s;
+
 			&:hover {
 				background-color: #f79f24;
 			}
+
 			img {
 				max-height: 20px;
 			}
 		}
 	}
+
 	&-title {
 		font-size: 20px;
 		font-weight: 600;
 		color: white;
 		margin-bottom: 40px;
+
+		@media (max-width: 576px) {
+			margin-bottom: 15px;
+		}
 	}
+
 	&__ul {
 		li {
 			list-style: none;
@@ -218,16 +256,20 @@ export default {
 			justify-content: flex-start;
 			gap: 20px;
 		}
-		a, .header-register {
+
+		a,
+		.header-register {
 			font-size: 14px;
 			font-weight: 400;
 			color: white;
 			transition: color 0.3s;
 			background-color: transparent;
+
 			&:hover {
 				color: #f79f24;
 			}
 		}
+
 		img {
 			max-height: 14px;
 			position: relative;

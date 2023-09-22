@@ -1,17 +1,26 @@
 <template>
 	<section class="counter">
 		<div class="container">
-			<div class="counter-item" ref="counter1">
+			<div
+				class="counter-item"
+				ref="counter1"
+			>
 				<p class="count">0</p>
-                <p class="title">Years of Experienced</p>
+				<p class="title">Years of Experienced</p>
 			</div>
-			<div class="counter-item" ref="counter2">
+			<div
+				class="counter-item"
+				ref="counter2"
+			>
 				<p class="count">0</p>
-                <p class="title">Years of Experienced</p>
+				<p class="title">Years of Experienced</p>
 			</div>
-			<div class="counter-item" ref="counter3">
+			<div
+				class="counter-item"
+				ref="counter3"
+			>
 				<p class="count">0</p>
-                <p class="title">Years of Experienced</p>
+				<p class="title">Years of Experienced</p>
 			</div>
 		</div>
 	</section>
@@ -63,22 +72,52 @@ export default {
 	justify-content: center;
 	align-items: center;
 	background-color: #252525;
+
 	.container {
 		padding: 60px 15px;
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 20%;
+		align-items: flex-start;
+		justify-content: space-evenly;
+		flex-wrap: wrap;
+		column-gap: 20px;
+		row-gap: 45px;
 	}
+
+	&-item {
+		width: calc(100% / 3 - 40px / 3);
+
+		@media (max-width: 768px) {
+			width: calc(100% / 2 - 20px / 2);
+		}
+
+		@media (max-width: 480px) {
+			width: 100%;
+		}
+	}
+
 	.count {
 		text-align: center;
 		font-size: 40px;
 		font-weight: bold;
-        color: #f79f24;
-        margin-bottom: 10px;
+		color: #f79f24;
+		margin-bottom: 10px;
+
+		@media (max-width: 480px) {
+			font-size: 32px;
+		}
 	}
-    .title{
-        color: white;
-    }
+
+	.title {
+		color: white;
+		text-align: center;
+		max-width: 200px;
+		margin: auto;
+		font-size: 16px;
+		line-height: 1.5;
+
+		@media (max-width: 480px) {
+			font-size: 14px;
+		}
+	}
 }
 </style>

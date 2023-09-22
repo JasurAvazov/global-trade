@@ -12,14 +12,25 @@
 				<button type="submit">Добавить отзыв</button>
 			</form>
 
-			<ul>
-				<li v-for="feedback in feedbacks" :key="feedback.id">
+			<ul v-if="feedbacks.value">
+				<li
+					v-for="feedback in feedbacks"
+					:key="feedback.id"
+				>
 					{{ feedback.paragraph }}
 					<button @click="deleteFeedback(feedback.id)">
 						Удалить
 					</button>
 				</li>
 			</ul>
+			<div
+				v-else
+				class="empty"
+			>
+				<span>
+					Empty
+				</span>
+			</div>
 		</div>
 	</div>
 </template>
@@ -54,16 +65,13 @@ const deleteFeedback = async (feedbackId) => {
 <style lang="scss" scoped>
 .feedbacks {
 	.container {
-        padding: 50px 15px;
+		padding: 50px 15px;
 	}
-	h1 {
-		font-size: 24px;
-		font-weight: bold;
-		margin-bottom: 20px;
-	}
+
 
 	form {
 		margin-bottom: 20px;
+
 		textarea {
 			width: 100%;
 			padding: 10px;
@@ -71,6 +79,7 @@ const deleteFeedback = async (feedbackId) => {
 			border-radius: 5px;
 			resize: vertical;
 		}
+
 		button {
 			margin-top: 10px;
 			padding: 10px 20px;
@@ -88,15 +97,18 @@ const deleteFeedback = async (feedbackId) => {
 		background-color: #f2f2f2;
 		padding: 20px;
 		border-radius: 5px;
+
 		li {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			padding: 10px 0;
 			border-bottom: 1px solid #ccc;
+
 			&:last-child {
 				border-bottom: none;
 			}
+
 			button {
 				background-color: #dc3545;
 				color: #fff;
@@ -107,5 +119,4 @@ const deleteFeedback = async (feedbackId) => {
 			}
 		}
 	}
-}
-</style>
+}</style>

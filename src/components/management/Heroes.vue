@@ -30,12 +30,18 @@
 				<button type="submit">Добавить слайд</button>
 			</form>
 
-			<ul>
-				<li v-for="hero in heroes" :key="hero.id">
+			<ul v-if="heroes.value">
+				<li
+					v-for="hero in heroes"
+					:key="hero.id"
+				>
 					<div>
 						<p>photo:</p>
 						<br />
-						<img :src="hero.photoURL" alt="Фотография слайда" />
+						<img
+							:src="hero.photoURL"
+							alt="Фотография слайда"
+						/>
 					</div>
 					<p>
 						subtitle:<br />
@@ -56,6 +62,14 @@
 					<button @click="deleteHero(hero.id)">Удалить</button>
 				</li>
 			</ul>
+			<div
+				v-else
+				class="empty"
+			>
+				<span>
+					Empty
+				</span>
+			</div>
 		</div>
 	</div>
 </template>
@@ -139,14 +153,10 @@ const deleteHero = async (heroId) => {
 	.container {
 		padding: 50px 15px;
 	}
-	h1 {
-		font-size: 24px;
-		font-weight: bold;
-		margin-bottom: 20px;
-	}
 
 	form {
 		margin-bottom: 20px;
+
 		textarea {
 			width: 100%;
 			padding: 10px;
@@ -154,6 +164,7 @@ const deleteHero = async (heroId) => {
 			border-radius: 5px;
 			resize: vertical;
 		}
+
 		input[type="file"] {
 			width: 100%;
 			padding: 10px 20px;
@@ -162,6 +173,7 @@ const deleteHero = async (heroId) => {
 			border-radius: 5px;
 			margin-bottom: 5px;
 		}
+
 		button {
 			margin-top: 10px;
 			padding: 10px 20px;
@@ -173,25 +185,29 @@ const deleteHero = async (heroId) => {
 		}
 	}
 
+
 	ul {
 		list-style: none;
-		padding: 0;
 		background-color: #f2f2f2;
 		padding: 20px;
 		border-radius: 5px;
+
 		li {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;
 			padding: 10px 0;
 			border-bottom: 1px solid #ccc;
+
 			&:last-child {
 				border-bottom: none;
 			}
+
 			img {
 				width: 200px;
 				aspect-ratio: 16/10;
 			}
+
 			button {
 				background-color: #dc3545;
 				color: #fff;

@@ -1,5 +1,8 @@
 <template>
-	<section class="cta" ref="parallax">
+	<section
+		class="cta"
+		ref="parallax"
+	>
 		<div class="bg"></div>
 		<div class="cta-content container">
 			<h2 class="cta-title">Оптимизируйте свой бизнес с нами!</h2>
@@ -7,7 +10,10 @@
 				Мы предлагаем лучшие решения по закупкам из Китая и снабжению
 				вашего бизнеса. Узнайте, как мы можем помочь вам достичь успеха.
 			</p>
-			<a href="#" class="cta-button">Свяжитесь с нами</a>
+			<a
+				href="#"
+				class="cta-button"
+			>Свяжитесь с нами</a>
 		</div>
 	</section>
 </template>
@@ -37,7 +43,7 @@ export default {
 
 				tl.fromTo(target, {
 					backgroundPosition: '0 -200px',
-				},{
+				}, {
 					backgroundPosition: '0 -400px',
 				});
 			});
@@ -58,9 +64,13 @@ export default {
 	background-size: cover;
 	position: relative;
 	will-change: background-position;
+
+	@media (max-width: 576px) {
+		padding: 80px 0 50px;
+	}
 }
 
-.bg{
+.bg {
 	background-color: black;
 	position: absolute;
 	top: 0;
@@ -106,9 +116,16 @@ export default {
 	transition: background-color 0.3s, color 0.3s;
 	border: 1px solid #f79f24;
 	font-weight: 600;
-	&:hover {
-		background-color: white;
-		color: #f79f24;
+
+	@media (min-width: 992px) {
+		&:hover {
+			background-color: white;
+			color: #f79f24;
+		}
+	}
+
+	@media (max-width: 576px) {
+		padding: 12px 20px;
 	}
 }
 </style>

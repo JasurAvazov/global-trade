@@ -1,9 +1,16 @@
 <template>
 	<section class="our-advantages">
 		<div class="container">
-			<div class="advantage" v-for="item in items" :key="item.id">
+			<div
+				class="advantage"
+				v-for="item in items"
+				:key="item.id"
+			>
 				<div class="circle">
-					<img :src="item.photoURL" alt="Иконка" />
+					<img
+						:src="item.photoURL"
+						alt="Иконка"
+					/>
 				</div>
 				<h3 class="advantage-title">{{ item.title }}</h3>
 				<p class="advantage-text">{{ item.text }}</p>
@@ -45,11 +52,10 @@ export default {
 
 	.container {
 		display: flex;
-		align-items: center;
 		justify-content: space-evenly;
 		padding: 100px 15px;
 		flex-wrap: wrap;
-		column-gap: 16px;
+		column-gap: 25px;
 		row-gap: 36px;
 
 		@media (max-width: 992px) {
@@ -59,6 +65,20 @@ export default {
 
 	.advantage {
 		text-align: center;
+		width: calc(100% / 4 - 75px / 4);
+
+		@media (max-width: 992px) {
+			width: calc(100% / 3 - 50px / 3);
+		}
+
+		@media (max-width: 768px) {
+			width: calc(100% / 2 - 25px / 2);
+		}
+
+		@media (max-width: 576px) {
+			width: 100%;
+			max-width: 400px;
+		}
 
 		.circle {
 			width: 120px;

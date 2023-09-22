@@ -127,7 +127,7 @@ export default {
 			padding: 30px 20px 20px;
 			border-radius: 5px;
 			border: 1px solid rgba(0, 0, 0, 0.02);
-			box-shadow: 0px 0px 40px 5px rgba(0, 0, 0, 0.253);
+			box-shadow: 0 0 30px 4px rgba(0, 0, 0, 0.253);
 			min-height: 200px;
 			margin-bottom: 80px;
 

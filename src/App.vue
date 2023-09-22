@@ -44,11 +44,10 @@ body.of {
   overflow: hidden;
 }
 
-
 .container {
   max-width: 1200px;
   width: 100%;
-  padding: 0 15px;
+  padding: 0 12px;
   margin: 0 auto;
 }
 

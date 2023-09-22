@@ -23,3 +23,34 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" >
+.empty {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+
+  span {
+    opacity: 0.6;
+  }
+}
+
+.advantages,
+.heroes,
+.works,
+.feedbacks {
+  h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+    @media (max-width: 576px) {
+      font-size: 20px;
+      text-align: center;
+    }
+  }
+
+}
+</style>
