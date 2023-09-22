@@ -1,13 +1,26 @@
 <template>
 	<header class="header">
-		<div @click="toggleBurgerActive()" :class="{ active: isOpenBurger }" class="filter"></div>
+		<div
+			@click="toggleBurgerActive()"
+			:class="{ active: isOpenBurger }"
+			class="filter"
+		></div>
 		<div class="header__top">
 			<div class="container">
-				<a class="logo" href="#">
+				<a
+					class="logo"
+					href="#"
+				>
 					<p>GGTrade<span>.</span></p>
 				</a>
-				<div :class="{ active: isOpenBurger }" class="header__features">
-					<div @click="toggleBurgerActive()" class="nav__exit">
+				<div
+					:class="{ active: isOpenBurger }"
+					class="header__features"
+				>
+					<div
+						@click="toggleBurgerActive()"
+						class="nav__exit"
+					>
 						<div class="nav__exit-btn">
 							<div class="btn-elem"></div>
 						</div>
@@ -15,7 +28,11 @@
 					<div class="header__about">
 						<div class="header__about-item">
 							<div class="header__about-icon">
-								<img src="../assets/img/icons/location-arrow.svg" alt="" draggable="false" />
+								<img
+									src="../assets/img/icons/location-arrow.svg"
+									alt=""
+									draggable="false"
+								/>
 							</div>
 							<div class="header__about-text">
 								<h5 class="header__about-title">ADDRESS</h5>
@@ -26,7 +43,11 @@
 						</div>
 						<div class="header__about-item">
 							<div class="header__about-icon">
-								<img src="../assets/img/icons/location-arrow.svg" alt="" draggable="false" />
+								<img
+									src="../assets/img/icons/location-arrow.svg"
+									alt=""
+									draggable="false"
+								/>
 							</div>
 							<div class="header__about-text">
 								<h5 class="header__about-title">CALL US</h5>
@@ -38,27 +59,47 @@
 						<nav class="header__nav">
 							<ul>
 								<li>
-									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '' }">
+									<router-link
+										@click="toggleBurgerActive()"
+										class="header__nav-btn"
+										:to="{ name: 'home', hash: '' }"
+									>
 										Главная
 									</router-link>
 								</li>
 								<li>
-									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#works' }">
+									<router-link
+										@click="toggleBurgerActive()"
+										class="header__nav-btn"
+										:to="{ name: 'home', hash: '#works' }"
+									>
 										Работы
 									</router-link>
 								</li>
 								<li>
-									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#feedbacks' }">
+									<router-link
+										@click="toggleBurgerActive()"
+										class="header__nav-btn"
+										:to="{ name: 'home', hash: '#feedbacks' }"
+									>
 										Отзывы
 									</router-link>
 								</li>
 								<li>
-									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#prices' }">
+									<router-link
+										@click="toggleBurgerActive()"
+										class="header__nav-btn"
+										:to="{ name: 'home', hash: '#prices' }"
+									>
 										Сервисы
 									</router-link>
 								</li>
 								<li>
-									<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#contacts' }">
+									<router-link
+										@click="toggleBurgerActive()"
+										class="header__nav-btn"
+										:to="{ name: 'home', hash: '#contacts' }"
+									>
 										Контакты
 									</router-link>
 								</li>
@@ -68,27 +109,46 @@
 					<ul class="header__links">
 						<li>
 							<a href="#">
-								<img src="../assets/img/icons/facebook.svg" alt="" draggable="false" />
+								<img
+									src="../assets/img/icons/facebook.svg"
+									alt=""
+									draggable="false"
+								/>
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="../assets/img/icons/twitter.svg" alt="" draggable="false" />
+								<img
+									src="../assets/img/icons/twitter.svg"
+									alt=""
+									draggable="false"
+								/>
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="../assets/img/icons/instagram.svg" alt="" draggable="false" />
+								<img
+									src="../assets/img/icons/instagram.svg"
+									alt=""
+									draggable="false"
+								/>
 							</a>
 						</li>
 						<li>
 							<a href="#">
-								<img src="../assets/img/icons/dribbble.svg" alt="" draggable="false" />
+								<img
+									src="../assets/img/icons/dribbble.svg"
+									alt=""
+									draggable="false"
+								/>
 							</a>
 						</li>
 					</ul>
 				</div>
-				<div @click="toggleBurgerActive()" class="nav__open">
+				<div
+					@click="toggleBurgerActive()"
+					class="nav__open"
+				>
 					<div class="nav__open-btn">
 						<div class="btn-elem"></div>
 					</div>
@@ -100,27 +160,42 @@
 				<nav class="header__nav">
 					<ul>
 						<li>
-							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '' }">
+							<router-link
+								class="header__nav-btn"
+								:to="{ name: 'home', hash: '' }"
+							>
 								Главная
 							</router-link>
 						</li>
 						<li>
-							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#works' }">
+							<router-link
+								class="header__nav-btn"
+								:to="{ name: 'home', hash: '#works' }"
+							>
 								Работы
 							</router-link>
 						</li>
 						<li>
-							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#feedbacks' }">
+							<router-link
+								class="header__nav-btn"
+								:to="{ name: 'home', hash: '#feedbacks' }"
+							>
 								Отзывы
 							</router-link>
 						</li>
 						<li>
-							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#prices' }">
+							<router-link
+								class="header__nav-btn"
+								:to="{ name: 'home', hash: '#prices' }"
+							>
 								Сервисы
 							</router-link>
 						</li>
 						<li>
-							<router-link class="header__nav-btn" :to="{ name: 'home', hash: '#contacts' }">
+							<router-link
+								class="header__nav-btn"
+								:to="{ name: 'home', hash: '#contacts' }"
+							>
 								Контакты
 							</router-link>
 						</li>
@@ -515,5 +590,4 @@ export default {
 			}
 		}
 	}
-}
-</style>
+}</style>
