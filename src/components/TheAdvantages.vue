@@ -7,10 +7,7 @@
 				:key="item.id"
 			>
 				<div class="circle">
-					<img
-						:src="item.photoURL"
-						alt="Иконка"
-					/>
+					<img :src="item.photoURL" alt="Иконка" draggable="false"/>
 				</div>
 				<h3 class="advantage-title">{{ item.title }}</h3>
 				<p class="advantage-text">{{ item.text }}</p>
@@ -49,7 +46,6 @@ export default {
 	background-color: #edeff5;
 	display: flex;
 	justify-content: space-between;
-
 	.container {
 		display: flex;
 		justify-content: space-evenly;
@@ -57,12 +53,10 @@ export default {
 		flex-wrap: wrap;
 		column-gap: 25px;
 		row-gap: 36px;
-
 		@media (max-width: 992px) {
 			padding: 60px 15px;
 		}
 	}
-
 	.advantage {
 		text-align: center;
 		width: calc(100% / 4 - 75px / 4);
@@ -90,19 +84,22 @@ export default {
 			justify-content: center;
 			align-items: center;
 			margin-bottom: 20px;
-
 			img {
-				max-width: 80%;
-				max-height: 80%;
+				max-width: 45%;
+				width: 100%;
+				object-fit: contain;
+			}
+			svg{
+				max-width: 45%;
+				width: 100%;
+				object-fit: contain;
 			}
 		}
-
 		.advantage-title {
 			color: #202020;
 			font-size: 20px;
 			margin-bottom: 10px;
 		}
-
 		.advantage-text {
 			color: gray;
 			font-size: 16px;
