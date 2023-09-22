@@ -119,8 +119,11 @@ export default {
 
 	@media (max-width: 576px) {
 		width: 100%;
+		min-height: 330px;
 	}
-
+	@media (max-width: 380px) {
+		min-height: 240px;
+	}
 	&-title {
 		color: white;
 		font-weight: 500;
