@@ -3,7 +3,7 @@
 		<div class="container">
 			<div class="advantage" v-for="item in items" :key="item.id">
 				<div class="circle">
-					<img :src="item.photoURL" alt="Иконка" />
+					<img :src="item.photoURL" alt="Иконка" draggable="false"/>
 				</div>
 				<h3 class="advantage-title">{{ item.title }}</h3>
 				<p class="advantage-text">{{ item.text }}</p>
@@ -42,7 +42,6 @@ export default {
 	background-color: #edeff5;
 	display: flex;
 	justify-content: space-between;
-
 	.container {
 		display: flex;
 		align-items: center;
@@ -51,15 +50,12 @@ export default {
 		flex-wrap: wrap;
 		column-gap: 16px;
 		row-gap: 36px;
-
 		@media (max-width: 992px) {
 			padding: 60px 15px;
 		}
 	}
-
 	.advantage {
 		text-align: center;
-
 		.circle {
 			width: 120px;
 			height: 120px;
@@ -70,19 +66,22 @@ export default {
 			justify-content: center;
 			align-items: center;
 			margin-bottom: 20px;
-
 			img {
-				max-width: 80%;
-				max-height: 80%;
+				max-width: 45%;
+				width: 100%;
+				object-fit: contain;
+			}
+			svg{
+				max-width: 45%;
+				width: 100%;
+				object-fit: contain;
 			}
 		}
-
 		.advantage-title {
 			color: #202020;
 			font-size: 20px;
 			margin-bottom: 10px;
 		}
-
 		.advantage-text {
 			color: gray;
 			font-size: 16px;

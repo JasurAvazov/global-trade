@@ -28,8 +28,8 @@ import TheAdvantages from '../components/TheAdvantages.vue'
 
     <TheCounter />
 
-    <!--
-    <Prices /> -->
-    <!-- <TheCTA /> -->
+    
+    <Prices />
+    <TheCTA />
   </main>
 </template>

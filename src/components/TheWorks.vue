@@ -138,7 +138,7 @@ export default {
 		transform: translateY(100%);
 		opacity: 0;
 		transition: transform .2s, opacity .2s;
-
+		will-change: transform, opacity;
 		@media (max-width: 992px) {
 			transform: translateY(0);
 			opacity: 1;
